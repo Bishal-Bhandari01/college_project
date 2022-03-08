@@ -1,3 +1,13 @@
+<?php 
+$server = "localhost";
+$username = "root";
+$password = "";
+$dbserver = "online_shoe_shop";
+
+$conn = mysqli_connect($server, $username, $password, $dbserver);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,11 +43,9 @@
                     <a href="#">About us</a>
                 </li>
                 <li>
-                    <a href="./adduser/adduser.php">
-                       <i class="fas fa-solid fa-user-plus"
-                        style="color:black"
-                        ></i> 
-                    </a>
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+                        <input type="button" class="logout" name="logout" value="logout">
+                    </form>
                 </li>
             </ul>
         </div>
@@ -63,6 +71,19 @@
         </div>
     </section>
 
+
+    <?php
+    if($conn){
+        session_start();
+        if(isset($_POST['logout'])){
+            echo "<script>alert('logout successful')";
+            session_unset();
+            header("location: ../forms/adminlogin/admin.php");
+        }
+    }
+    
+    
+    ?>
     <script type="text/javascript" src="adminpannel.js"></script>
 </body>
 </html>

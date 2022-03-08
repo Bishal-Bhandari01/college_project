@@ -36,6 +36,15 @@ ul li a{
     margin-right: 30px;
     color: #fff;
 }
+ul li .logout{
+    width: 90px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 30px;
+    border: 0px;
+    cursor: pointer;
+}
+
 /* home styleling */
 .home{
     overflow: hidden;
@@ -69,3 +78,4 @@ ul li a{
     border:none;
     cursor: pointer;
 }
+

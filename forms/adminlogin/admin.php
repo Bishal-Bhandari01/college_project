@@ -58,12 +58,12 @@ $conn = mysqli_connect($server, $username, $password, $dbserver);
                     <h1 class="title">Sign In</h1>
                     <div class="adminform">
                         <input type="email" class="email" id="email" name="email" placeholder="Enter your valid email">
-                        <p class="em" style="color:red;
+                        <p id="em" style="color:red;
                         font-size: 15px;"></p>
                     </div>
                     <div class="adminform">
                         <input type="password" class="uname" id="password" name="pword" placeholder="Enter your valid password" style="margin-top: 10px;" id="password">
-                        <p class="em" style="color:red;
+                        <p id="em" style="color:red;
                         font-size: 15px;"></p>
                     </div>
                     <button class="btn" name="login">Login</button>
@@ -75,15 +75,15 @@ $conn = mysqli_connect($server, $username, $password, $dbserver);
                         $passd = trim($_POST['pword']);
                         $ademail = trim($_POST['email']);
     
-                        $sqli = 'SELECT * FROM `admin` WHERE `email`=`$ademail` AND `password`=`$passd`';
-    
+                        $sqli = "SELECT * FROM admin WHERE email='".$ademail."' AND password='".$passd."'";
+
                         if($stmt = mysqli_prepare($conn,$sqli)){
     
                             mysqli_stmt_execute($stmt);
     
-                            if (mysqli_stmt_num_rows($stmt) == 1) {
+                            if (mysqli_stmt_num_rows($stmt) == 0) {
                                 session_start();
-                                header("location: ../../admin/adminpannel.php");
+                                header("location: ../../admin_page/adminpannel.php");
     
                             } else {
                                 echo "<script>
