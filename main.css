@@ -37,10 +37,6 @@ ul li a{
     margin-right: 30px;
     color: #fff;
 }
-ul li a .loginbutton{
-    width: 90px;
-    height: 50px;
-}
 
 /* home start here */
 .home{
@@ -74,4 +70,13 @@ ul li a .loginbutton{
     background: transparent;
     border:none;
     cursor: pointer;
+}
+
+
+
+/* footer styling */
+.footer {
+    background-color: gray;
+    color: #fff;
+    text-align: center;
 }

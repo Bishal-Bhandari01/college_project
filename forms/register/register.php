@@ -1,3 +1,13 @@
+<?php
+$server = "localhost";
+$username = "root";
+$password = "";
+$dbserver= "online_shoe_shop";
+
+$conn = mysqli_connect($server, $username, $password, $dbserver);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +50,7 @@
         <div class="max-width">
             <div class="data"></div>
             <div class="form">
-                <form id="form" action="/">
+                <form id="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>">
                     <h1 class="title">Sign up</h1>
                     <div class="username">
                         <input 
@@ -75,7 +85,7 @@
                          style="color:red"></div>
                     </div>
                     
-                    <button class="btn" type="submit">Register</button>
+                    <button class="btn" type="submit" name="reg">Register</button>
                     <div class="create">
                         <p class="text">Do have account:</p>
                         <a href="../login/login.php" class="log">
@@ -84,6 +94,25 @@
                     </div>
 
                 </form>
+
+                <?php
+                if($conn){
+                    if(isset($_POST['reg'])){
+
+                        $uname = $_POST['uname'];
+                        $email = $_POST['email'];
+                        $passwd = $_POST['password'];
+
+                        $hashed_password = password_hash($passwd, PASSWORD_DEFAULT);
+                        echo $hashed_password;
+
+                        $sqli = "INSERT INTO `user`(`username`, `email`, `password`) VALUES ('$uname', '$email', '$passwd')";
+
+
+                    }
+                }
+                ?>
+
             </div>
         </div>
     </main>
