@@ -29,7 +29,7 @@ $conn = mysqli_connect($server, $username, $password, $dbserver);
     <header class="navbar">
         <div class="max-width">
             <div class="logo">
-                <p>logo</p>
+                <img src="../../pictures/project_logo.png" style="width:60px;height:25px;filter: brightness(0) invert(1);">
             </div>
             <ul>
                 <li>
@@ -58,9 +58,11 @@ $conn = mysqli_connect($server, $username, $password, $dbserver);
                          class="uname"
                          name="uname"
                          id="username"
-                         placeholder="Enter your valid username.">
-                         <div class="em"
-                         style="color:red"></div>
+                         placeholder="Enter your valid username."
+                         required>
+                         <div id="usernameerror"
+                         style="color:red">
+                        </div>
                     </div>
                     <div class="username">
                         <input 
@@ -69,8 +71,9 @@ $conn = mysqli_connect($server, $username, $password, $dbserver);
                          id="email"
                          name="email"
                          placeholder="Enter your valid email."
-                         style="margin-top: 10px;">
-                         <div class="em"
+                         style="margin-top: 10px;"
+                         required>
+                         <div id="emailerror"
                          style="color:red"></div>
                     </div>
                     <div class="username">
@@ -80,12 +83,44 @@ $conn = mysqli_connect($server, $username, $password, $dbserver);
                          name="password"
                          id="password"
                          placeholder="Enter your valid password"
-                         style="margin-top: 10px;">
-                         <div class="em"
+                         style="margin-top: 10px;"
+                         required>
+                        <div id="passworderrorlength"
                          style="color:red"></div>
+                        
                     </div>
                     
-                    <button class="btn" type="submit" name="reg">Register</button>
+                    <input type="button" class="btn" name="register" value="Register">
+                    <?php
+                    if($conn){
+                        echo "Connected3";
+                        if(isset($_POST['register'])){
+                            echo "Connected1";
+                            $uname = trim($_POST['uname']);
+                            $email = trim($_POST['email']);
+                            $passwd = trim($_POST['password']);
+
+                            $hashed_password = password_hash($passwd, PASSWORD_DEFAULT);
+
+                            $sqli = "INSERT INTO `user` ('username', 'email, `password`) VALUES ('".$uname."', '".$email."', '".$hashed_password."')";
+                            
+                            echo "connected2";
+
+                            if($stmt = mysqli_prepare($conn,$sqli)){
+
+                                echo "mysql_query";
+                                mysqli_stmt_execute($stmt);
+
+                                if (mysqli_stmt_num_rows($stmt) == 0) {
+                                    header("location: ../login/login.php");
+                                }
+                                else{
+                                    echo "<script>alert('Enter Valid Details');</script>";
+                                }
+                            }
+                        }
+                    }
+                    ?>
                     <div class="create">
                         <p class="text">Do have account:</p>
                         <a href="../login/login.php" class="log">
@@ -95,23 +130,6 @@ $conn = mysqli_connect($server, $username, $password, $dbserver);
 
                 </form>
 
-                <?php
-                if($conn){
-                    if(isset($_POST['reg'])){
-
-                        $uname = $_POST['uname'];
-                        $email = $_POST['email'];
-                        $passwd = $_POST['password'];
-
-                        $hashed_password = password_hash($passwd, PASSWORD_DEFAULT);
-                        echo $hashed_password;
-
-                        $sqli = "INSERT INTO `user`(`username`, `email`, `password`) VALUES ('$uname', '$email', '$passwd')";
-
-
-                    }
-                }
-                ?>
 
             </div>
         </div>

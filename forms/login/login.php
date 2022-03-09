@@ -1,5 +1,10 @@
+<?php 
+include '../../dbconn.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,12 +21,16 @@
     <!-- JQuery files -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
 </head>
+
 <body>
-    
-    <header class="navbar">
+
+    <nav class="navbar" style="background:gray;
+            border-radius:0">
         <div class="max-width">
             <div class="logo">
-                <p>logo</p>
+                <img src="../../pictures/project_logo.png" style="width:60px;
+                                                                height:25px;
+                                                                filter:brightness(0) invert(1);">
             </div>
             <ul>
                 <li>
@@ -33,10 +42,10 @@
                 <li>
                     <a href="#">About us</a>
                 </li>
-                
+
             </ul>
         </div>
-    </header>
+    </nav>
 
     <main class="home">
         <div class="max-width">
@@ -53,38 +62,45 @@
                 <form id="form" action="/" method="GET">
                     <h1 class="title">Sign In</h1>
                     <div class="username">
-                        <input 
-                        type="email"
-                        class="uname"
-                        id="uname"
-                        name="uname"
-                        placeholder="Enter your valid email">
-                        <p
-                        class="em"
-                        style="color:red;
-                        font-size: 15px;"></p>
+                        <input type="email" class="uname" id="uname" name="uname" placeholder="Enter your valid email">
                     </div>
                     <div class="username">
-                        <input 
-                        type="password"
-                        class="uname"
-                        name="password"
-                        placeholder="Enter your valid password"
-                        style="margin-top: 10px;"
-                        id="password">
-                        <p
-                        class="em"
-                        style="color:red;
-                        font-size: 15px;"></p>
+                        <input type="password" class="uname" name="password" placeholder="Enter your valid password" style="margin-top: 10px;" id="password">
                     </div>
-                    <button class="btn" type="submit">Login</button>
+                    <button class="btn" type="submit" name="login">Login</button>
+                    <?php
+
+                    if ($conn) {
+                        if (isset($_POST['login'])) {
+                            $passd = trim($_POST['pword']);
+                            $useremail = trim($_POST['email']);
+
+                            $sqli = "SELECT * FROM user WHERE email='" . $useremail . "' AND password='" . $passd . "'";
+
+                            if ($stmt = mysqli_prepare($conn, $sqli)) {
+
+                                mysqli_stmt_execute($stmt);
+
+                                if (mysqli_stmt_num_rows($stmt) == 0) {
+                                    session_start();
+                                    header("location: ../../users/user.php");
+                                } else {
+                                    echo "<script>
+                                    alert('Incorrect Email or Password.');
+                                    </script>";
+                                }
+                            }
+                        }
+                    }
+
+                    ?>
                     <div class="create">
                         <p class="text">Don't have account:</p>
                         <a href="../register/register.php" class="reg">
                             Register
                         </a>
                     </div>
-                    
+
                 </form>
             </div>
 
@@ -92,4 +108,5 @@
     </main>
     <script type="text/javascript" src="login.js"></script>
 </body>
+
 </html>

@@ -15,10 +15,8 @@
     position: fixed;
     width: 100%;
     background:gray;
-    /* text-align: center; */
     padding: 20px 0;
     color: #fff;
-    border-radius:0 0 60px 60px;
 }
 .logo{
     font-size: 20px;

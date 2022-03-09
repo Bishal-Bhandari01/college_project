@@ -30,7 +30,8 @@ $conn = mysqli_connect($server, $username, $password, $dbserver);
     <header class="navbar">
         <div class="max-width">
             <div class="logo">
-                <p>logo</p>
+                <img src="../pictures/project_logo.png"
+                style="width:60px;height:25px; filter: brightness(0) invert(1);">
             </div>
             <ul>
                 <li>
