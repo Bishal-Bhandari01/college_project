@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Kanit',sans-serif;
+}
+.max-width {
+    max-width: 1300;
+    padding: 0 60px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+.navbar{
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    background: rgba(15, 15, 13, 0.623);
+    padding: 20px 0;
+    color: #fff;
+    border-radius:0 0 60px 60px;
+}
+.logo{
+    font-size: 20px;
+    font-weight: bold;
+}
+ul{
+    float: right;
+    margin-bottom: 5px;
+}
+
+ul li{
+    display: inline-block;
+}
+ul li a{
+    margin-right: 30px;
+    color: #fff;
+}
+.fas{
+    font-size: 20px;
+    cursor: pointer;
+}
