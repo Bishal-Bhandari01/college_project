@@ -1,9 +1,11 @@
-<?php 
+<?php
 include "./dbconn.php";
+session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,12 +22,12 @@ include "./dbconn.php";
     <!-- JQuery files -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
 </head>
+
 <body>
     <header class="navbar">
         <div class="max-width">
             <div class="logo">
-                <img src="../pictures/project_logo.png"
-                style="width:60px;height:25px; filter: brightness(0) invert(1);">
+                <img src="./assets/pictures/project_logo.png" style="width:60px;height:25px; filter: brightness(0) invert(1);">
             </div>
             <ul>
                 <li>
@@ -48,6 +50,15 @@ include "./dbconn.php";
 
     <section class="home">
         <div class="max-width">
+            <div class="buttonssection">
+                <button onclick="addperson()">Add person</button>
+                <button id="additem">Add items</button>
+            </div>
+            <script>
+                function addperson() {
+                    window.location.href = "adduserandadmin.php";
+                }
+            </script>
             <div class="category">
                 <label class="cate">Category: </label>
                 <select id="shoe_category">
@@ -57,28 +68,25 @@ include "./dbconn.php";
                     <option>Gold Star</option>
                 </select>
             </div>
-            <div class="search">
+            <form class="search" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                 <input type="text" name="search" placeholder="Search..." id="searchinput">
-                <button type="button" class="search-btn">
+                <button type="submit" class="search-btn">
                     <i class="fas fa-search"></i>
                 </button>
-            </div>
+            </form>
         </div>
     </section>
 
 
     <?php
-    if($conn){
-        session_start();
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if ($conn) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "<script>alert('Successfully logout.')";
             session_destroy();
-            header("location: adminpannel.php");
+            header("location: admin.php");
         }
     }
-    
-    
     ?>
-    <script type="text/javascript" src="./assets/js/adminpannel.js"></script>
 </body>
+
 </html>
