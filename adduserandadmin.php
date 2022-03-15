@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add user</title>
     <link rel="stylesheet" href="./assets/css/adduser.css">
+    <!-- google font -->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.css" integrity="sha512-E+53kXnJyuZFSz75xSmTfCpUNj3gp9Bd80TeQQMTPJTVWDRHPOpEYczGwWtsZXvaiz27cqvhdH8U+g/NMYua3A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -122,7 +123,7 @@
 
                     if ($result) {
 
-                        if (mysqli_num_rows($result) > 0) {
+                        if (mysqli_num_rows($result) > 0 && $selected_request == "---") {
                             $result_fetch = mysqli_fetch_assoc($result);
                             if ($result_fetch['email'] == $_POST['email']) {
                                 echo "<script>alert('Email already exists');</script>";

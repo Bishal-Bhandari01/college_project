@@ -41,7 +41,7 @@ session_start();
                 </li>
                 <li>
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-                        <input type="button" class="logout" name="logout" value="logout">
+                        <button type="submit" class="logout" name="logout"></button>
                     </form>
                 </li>
             </ul>
@@ -50,10 +50,10 @@ session_start();
 
     <section class="home">
         <div class="max-width">
-            <div class="buttonssection">
+            <div class="buttonssection" style="width: 100%;">
                 <button onclick="addperson()">Add person</button>
                 <button id="additem">Add items</button>
-            </div>
+            </div><br>
             <script>
                 function addperson() {
                     window.location.href = "adduserandadmin.php";
@@ -81,8 +81,8 @@ session_start();
     <?php
     if ($conn) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            echo "<script>alert('Successfully logout.')";
             session_destroy();
+            echo "<script>alert('Successfully logout.')";
             header("location: admin.php");
         }
     }

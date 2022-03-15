@@ -191,7 +191,7 @@ input{
                     <button class="btn" type="submit" name="register">Register</button>
                     <div class="create">
                         <p class="text">Do have account:</p>
-                        <a href="../login/login.php" class="log">
+                        <a href="./login.php" class="log">
                             Login
                         </a>
                     </div>

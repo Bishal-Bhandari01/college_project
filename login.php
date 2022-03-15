@@ -80,10 +80,11 @@ include './dbconn.php';
 
                             $result = mysqli_fetch_assoc($stmt);
 
-                            if(md5($passd) == $result['Password']){
-                                header('location: ./user.html');
+                            if(md5($passd) === $result['Password']){
+                                echo $result['Password'];
+                                header('location: user.html');
                             }else{
-                                header('location: ./regiser.php');
+                                header('Location: register.php');
                             }
 
                         }
