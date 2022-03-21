@@ -15,32 +15,38 @@
     <!-- JQuery files -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
 </head>
+
 <body>
     <style>
-        .title{
+        .title {
             text-align: center;
         }
-        input{
+
+        input {
             width: 300px;
             height: 30px;
             border-radius: 7px;
             border: 1px solid #000;
             text-align: center;
         }
-        .username{
+
+        .username {
             margin-top: 15px;
         }
-        #selectrole{
+
+        #selectrole {
             width: 255px;
             height: 28px;
             border-radius: 6px;
             margin-left: 5px;
         }
-        .btn{
+
+        .btn {
             text-align: center;
             margin-top: 15px;
         }
-        .addbtn{
+
+        .addbtn {
             width: 120px;
             border-radius: 6px;
             border: none;
@@ -49,12 +55,18 @@
             color: #fff;
             font-size: 17px;
         }
+
+        table,
+        tr,th,
+        td {
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
     </style>
     <nav class="navbar" style="border-radius: 0px;">
         <div class="max-width">
             <div class="logo">
-                <img src="./assets/pictures/project_logo.png" class="logopic"
-                style="width:60px;height:25px;filter: brightness(0) invert(1);">
+                <img src="./assets/pictures/project_logo.png" class="logopic" style="width:60px;height:25px;filter: brightness(0) invert(1);">
             </div>
             <ul>
                 <li>
@@ -74,12 +86,33 @@
             </ul>
         </div>
     </nav>
-    <main class="main">
+    <section style="
+        display: flex;
+        float: right;
+    ">
         <div class="max-width">
-            <form id="form2" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST"
-            style="position: relative;
+            <div style="
+                position:absolute;
+                top: 14%;
+                right: 8%
+            ">
+                <button id="js-btn" style="
+                    width: 130px;
+                    height: 30px;
+                    border:none;
+                    background: green;
+                    color:#fff;
+                    border-radius:8px;
+                " onclick="animateform()">Add User/Admin</button>
+            </div>
+        </div>
+    </section>
+    <section class="main">
+        <div class="max-width">
+            <form id="form2" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" style="position: relative;
             left: 40%;
-            padding-top: 8rem;">
+            padding-top: 8rem;
+            display: none">
                 <h1 class="title">Add User</h1>
                 <div class="username">
                     <label> Username</label><br>
@@ -111,13 +144,12 @@
             </form>
             <?php
             if ($conn) {
-                echo "connected";
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     $selected_request = $_POST['select'];
 
                     echo $selected_request;
-                    $user_exist_query = "SELECT * FROM `".$selected_request."` WHERE `email` = '".trim($_POST['email'])."'";
+                    $user_exist_query = "SELECT * FROM `" . $selected_request . "` WHERE `email` = '" . trim($_POST['email']) . "'";
 
                     $result = mysqli_query($conn, $user_exist_query);
 
@@ -131,10 +163,9 @@
                         } else {
                             $password = trim($_POST['password']);
                             $hashed_password = md5($password);
-                            $sqli = "INSERT INTO `".$selected_request."` (`username`, `email` , `Password`, `contact`) VALUES ('" .trim($_POST['username'])."', '".trim($_POST['email'])."','".$hashed_password."','".trim($_POST['contact_number'])."')";
+                            $sqli = "INSERT INTO `" . $selected_request . "` (`username`, `email` , `Password`, `contact`) VALUES ('" . trim($_POST['username']) . "', '" . trim($_POST['email']) . "','" . $hashed_password . "','" . trim($_POST['contact_number']) . "')";
                             if (mysqli_query($conn, $sqli)) {
-                                echo "<script>alert('Registed sucessfully');
-                                                window.location.href='../login/login.php';</script>";
+                                echo "<script>alert('Registed sucessfully');</script>";
                             }
                         }
                     }
@@ -142,7 +173,75 @@
             }
             ?>
         </div>
-    </main>
+    </section>
+
+    
+
+
+    <script>
+        var form = document.getElementById("form2");
+
+        function animateform() {
+
+            form.style.display = "block";
+
+        }
+    </script>
+
+<section>
+        <div class="max-width">
+            <div class="title"
+            style="
+                position: relative;
+                left: 50%;
+                margin-top: 140px;
+            ">
+                <h1>User</h1>
+            </div>
+            <div class="lte"
+            style="
+                position: relative;
+                width: 100%;
+                margin-top:15%;
+                margin-left: 8%;   
+            ">
+                <table style="
+                    width: 90%;
+                    text-align: center;
+                ">
+                    <tr style="
+                        background: crimson;
+                    ">
+                        <th>S.N</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Action</th>
+                    </tr>
+                    <?php
+                    $selected_query="SELECT * FROM user";
+                    $result = mysqli_query($conn, $selected_query);
+                    if(mysqli_num_rows($result)){
+                        while($row = mysqli_fetch_assoc($result)){
+                        ?>
+                        <tr>
+                            <td><?php echo $row['id']?></td>
+                            <td><?php echo $row['username']?></td>
+                            <td><?php echo $row['email']?></td>
+                            <td><?php echo $row['contact']?></td>
+                            <td>
+                                <a href="delete.php?id=<?php echo $row['id']?>" onclick="return confirm('Are you sure you want to delete this')">delete</a>
+                            </td>
+                        </tr>
+                        <?php
+                        }
+                    }
+                    ?>
+                </table>
+            </div>
+        </div>
+    </section>
+
 </body>
 
 </html>

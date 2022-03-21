@@ -158,15 +158,14 @@
                         $passd = trim($_POST['pword']);
                         $ademail = trim($_POST['email']);
     
-                        $sqli = "SELECT * FROM admin WHERE email='".$ademail."' AND password='".$passd."'";
+                        $sqli = "SELECT * FROM admin WHERE email='".$ademail."' AND password='".md5($passd)."'";
 
                         if($stmt = mysqli_prepare($conn,$sqli)){
     
                             mysqli_stmt_execute($stmt);
     
-                            if (mysqli_stmt_num_rows($stmt) == 0) {
-                                // session_start();
-                                $_SESSION['email'] = $ademail;
+                            if (mysqli_stmt_num_rows($stmt) === 0) {
+                                session_start();
                                 echo "<script>window.location.href='adminpannel.php';</script>";
     
                             } else {

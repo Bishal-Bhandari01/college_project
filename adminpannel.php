@@ -41,7 +41,7 @@ session_start();
                 </li>
                 <li>
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-                        <button type="submit" class="logout" name="logout"></button>
+                        <button type="submit" class="logout" name="logout">Log out</button>
                     </form>
                 </li>
             </ul>
@@ -50,15 +50,6 @@ session_start();
 
     <section class="home">
         <div class="max-width">
-            <div class="buttonssection" style="width: 100%;">
-                <button onclick="addperson()">Add person</button>
-                <button id="additem">Add items</button>
-            </div><br>
-            <script>
-                function addperson() {
-                    window.location.href = "adduserandadmin.php";
-                }
-            </script>
             <div class="category">
                 <label class="cate">Category: </label>
                 <select id="shoe_category">
@@ -68,6 +59,29 @@ session_start();
                     <option>Gold Star</option>
                 </select>
             </div>
+            <div class="buttonssection">
+                <button onclick="addperson()"
+                    style="width:100px;height:30px;
+                    border-radius:12px; border:none;
+                    background-color: green;color:#fff;
+                    margin-left: 70px;">
+                    Add person
+                </button>
+                <button onclick="additems()"
+                    style="width:100px;height:30px;
+                    border-radius:12px; border:none;
+                    background-color: green;color:#fff">
+                    Add items
+                </button>
+            </div><br>
+            <script>
+                function addperson() {
+                    window.location.href = "adduserandadmin.php";
+                }
+                function additems(){
+                    window.location.href = "addcategory.php";
+                }
+            </script>
             <form class="search" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                 <input type="text" name="search" placeholder="Search..." id="searchinput">
                 <button type="submit" class="search-btn">

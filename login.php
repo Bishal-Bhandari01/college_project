@@ -74,7 +74,7 @@ include './dbconn.php';
                             $passd = trim($_POST['password']);
                             $useremail = trim($_POST['email']);
 
-                            $query = "SELECT Password FROM user WHERE email = '$useremail'";
+                            $query = "SELECT Password FROM user WHERE email = '".$useremail."'";
 
                             $stmt = mysqli_query($conn, $query);
 
