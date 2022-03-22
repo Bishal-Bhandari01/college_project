@@ -45,7 +45,7 @@ ul li .logout{
 
 /* home styleling */
 .home{
-    overflow: hidden;
+    /* overflow: hidden; */
     padding:7% 2%;
     width: 100%;
     height: 100vh;

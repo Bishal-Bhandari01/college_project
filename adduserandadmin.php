@@ -165,7 +165,9 @@
                             $hashed_password = md5($password);
                             $sqli = "INSERT INTO `" . $selected_request . "` (`username`, `email` , `Password`, `contact`) VALUES ('" . trim($_POST['username']) . "', '" . trim($_POST['email']) . "','" . $hashed_password . "','" . trim($_POST['contact_number']) . "')";
                             if (mysqli_query($conn, $sqli)) {
-                                echo "<script>alert('Registed sucessfully');</script>";
+                                echo "<script>alert('Registed sucessfully');
+                                        window.location.href='./adminpannel.php';</script>";"        
+                                </script>";
                             }
                         }
                     }
@@ -182,9 +184,7 @@
         var form = document.getElementById("form2");
 
         function animateform() {
-
             form.style.display = "block";
-
         }
     </script>
 

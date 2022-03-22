@@ -1,4 +1,4 @@
-<?php include"./dbconn.php" ?>
+<?php include "./dbconn.php" ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,53 +21,58 @@
 <body>
 
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             text-decoration: none;
-            font-family: 'Kanit',sans-serif;
+            font-family: 'Kanit', sans-serif;
         }
+
         .max-width {
             max-width: 1300px;
             padding: 0 60px;
             display: flex;
             justify-content: space-between;
         }
-        .navbar{
+
+        .navbar {
             position: fixed;
             width: 100%;
-            background:gray;
+            background: gray;
             padding: 20px 0;
             color: #fff;
         }
-        .logo{
+
+        .logo {
             font-size: 20px;
             font-weight: bold;
         }
-        ul{
+
+        ul {
             float: right;
             margin-bottom: 5px;
         }
 
-        ul li{
+        ul li {
             display: inline-block;
         }
-        ul li a{
+
+        ul li a {
             margin-right: 30px;
             color: #fff;
         }
 
         /* home start here */
 
-        .home{
+        .home {
             width: 100%;
-            height:100vh;
+            height: 100vh;
             text-align: left;
             overflow: hidden;
         }
 
-        .form{
+        .form {
             display: flex;
             justify-content: center;
             position: absolute;
@@ -79,10 +84,12 @@
             border-radius: 30px;
             box-shadow: 6px 6px 10px -1px rgb(0 0 0 / 15%);
         }
-        .title{
-            margin-top:30px;
+
+        .title {
+            margin-top: 30px;
         }
-        input{
+
+        input {
             width: 350px;
             height: 35px;
             border: 1px solid;
@@ -90,7 +97,8 @@
             margin-top: 30px;
             text-align: center;
         }
-        .btn{
+
+        .btn {
             width: 160px;
             height: 40px;
             font-size: 18px;
@@ -102,7 +110,8 @@
             transition: all 0.5s ease-in-out;
             cursor: pointer;
         }
-        .text{
+
+        .text {
             font-size: 13px;
             font-weight: bold;
             margin-top: 30px;
@@ -114,8 +123,7 @@
     <header class="navbar">
         <div class="max-width">
             <div class="logo">
-                <img src="./assets/pictures/project_logo.png"
-                    style="width:60px;height:25px;filter:brightness(0) invert(1);">
+                <img src="./assets/pictures/project_logo.png" style="width:60px;height:25px;filter:brightness(0) invert(1);">
             </div>
             <ul>
                 <li>
@@ -151,30 +159,23 @@
                     <button class="btn" type="submit" name="login">Login</button>
                 </form>
                 <?php
+                if (isset($_POST['login'])) {
 
-                if($conn){
-                    if($_SERVER['REQUEST_METHOD']=='POST') {
+                    $passd = trim($_POST['pword']);
+                    $ademail = trim($_POST['email']);
 
-                        $passd = trim($_POST['pword']);
-                        $ademail = trim($_POST['email']);
-    
-                        $sqli = "SELECT * FROM admin WHERE email='".$ademail."' AND password='".md5($passd)."'";
+                    $query = "SELECT password FROM admin WHERE email = '" . $ademail . "'";
 
-                        if($stmt = mysqli_prepare($conn,$sqli)){
-    
-                            mysqli_stmt_execute($stmt);
-    
-                            if (mysqli_stmt_num_rows($stmt) === 0) {
-                                session_start();
-                                echo "<script>window.location.href='adminpannel.php';</script>";
-    
-                            } else {
-                                echo "<script>
-                                    alert('Incorrect Email or Password.');
-                                    </script>";
-                            }
-                        }
-    
+                    $result = mysqli_query($conn, $query);
+
+                    $row = mysqli_fetch_assoc($result);
+
+                    if (md5($passd) === $row['password']) {
+                        echo "<script>alert('Login Successfully');
+                                    window.location.href='./adminpannel.php';
+                                    </script>;";
+                    } else {
+                        echo "incorrect password";
                     }
                 }
 
