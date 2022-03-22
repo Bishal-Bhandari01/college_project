@@ -12,8 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.css" integrity="sha512-E+53kXnJyuZFSz75xSmTfCpUNj3gp9Bd80TeQQMTPJTVWDRHPOpEYczGwWtsZXvaiz27cqvhdH8U+g/NMYua3A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- JQuery files -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+    
 </head>
 
 <body>
@@ -57,7 +56,8 @@
         }
 
         table,
-        tr,th,
+        tr,
+        th,
         td {
             border: 1px solid #000;
             border-collapse: collapse;
@@ -166,7 +166,8 @@
                             $sqli = "INSERT INTO `" . $selected_request . "` (`username`, `email` , `Password`, `contact`) VALUES ('" . trim($_POST['username']) . "', '" . trim($_POST['email']) . "','" . $hashed_password . "','" . trim($_POST['contact_number']) . "')";
                             if (mysqli_query($conn, $sqli)) {
                                 echo "<script>alert('Registed sucessfully');
-                                        window.location.href='./adminpannel.php';</script>";"        
+                                        window.location.href='./adminpannel.php';</script>";
+                                "        
                                 </script>";
                             }
                         }
@@ -177,7 +178,7 @@
         </div>
     </section>
 
-    
+
 
 
     <script>
@@ -188,18 +189,16 @@
         }
     </script>
 
-<section>
+    <section>
         <div class="max-width">
-            <div class="title"
-            style="
+            <div class="title" style="
                 position: relative;
                 left: 50%;
                 margin-top: 140px;
             ">
                 <h1>User</h1>
             </div>
-            <div class="lte"
-            style="
+            <div class="lte" style="
                 position: relative;
                 width: 100%;
                 margin-top:15%;
@@ -219,21 +218,21 @@
                         <th>Action</th>
                     </tr>
                     <?php
-                    $selected_query="SELECT * FROM user";
+                    $selected_query = "SELECT * FROM user";
                     $result = mysqli_query($conn, $selected_query);
-                    if(mysqli_num_rows($result)){
-                        while($row = mysqli_fetch_assoc($result)){
-                        ?>
-                        <tr>
-                            <td><?php echo $row['id']?></td>
-                            <td><?php echo $row['username']?></td>
-                            <td><?php echo $row['email']?></td>
-                            <td><?php echo $row['contact']?></td>
-                            <td>
-                                <a href="delete.php?id=<?php echo $row['id']?>" onclick="return confirm('Are you sure you want to delete this')">delete</a>
-                            </td>
-                        </tr>
-                        <?php
+                    if (mysqli_num_rows($result)) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                            <tr>
+                                <td><?php echo $row['id'] ?></td>
+                                <td><?php echo $row['username'] ?></td>
+                                <td><?php echo $row['email'] ?></td>
+                                <td><?php echo $row['contact'] ?></td>
+                                <td>
+                                    <a href="delete.php?id=<?php echo $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this')">delete</a>
+                                </td>
+                            </tr>
+                    <?php
                         }
                     }
                     ?>

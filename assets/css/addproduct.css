@@ -1,76 +1,83 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: 'Kanit',sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Kanit", sans-serif;
 }
 .max-width {
-    max-width: 1300;
-    padding: 0 60px;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
+  max-width: 1300;
+  padding: 0 60px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
 }
-.navbar{
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-    background: rgba(15, 15, 13, 0.623);
-    padding: 20px 0;
-    color: #fff;
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  background: rgba(15, 15, 13, 0.623);
+  padding: 20px 0;
+  color: #fff;
 }
-ul{
-    float: right;
-    margin-bottom: 5px;
+ul {
+  float: right;
+  margin-bottom: 5px;
 }
 
-ul li{
-    display: inline-block;
+ul li {
+  display: inline-block;
 }
-ul li a{
-    margin-right: 30px;
-    color: #fff;
+ul li a {
+  margin-right: 30px;
+  color: #fff;
 }
-.fas{
-    font-size: 20px;
-    cursor: pointer;
+.fas {
+  font-size: 20px;
+  cursor: pointer;
 }
 /* home styling */
-.main{
-    overflow: hidden;
-    position: relative;
+.main {
+  overflow: hidden;
+  position: relative;
 }
-.title{
-    margin-bottom: 20px;
-    margin-left: 80px;
+.title {
+  margin-bottom: 20px;
+  margin-left: 80px;
 }
-.username{
-    margin-bottom: 10px;
+.username {
+  margin-bottom: 10px;
 }
-input{
-    width: 300px;
-    height: 30px;
-    border-radius: 30px;
-    border: 1px solid #000;
-    text-align: center;
+input {
+  width: 300px;
+  height: 30px;
+  border-radius: 30px;
+  border: 1px solid #000;
+  text-align: center;
 }
-#selectcate{
-    width: 230px;
-    border-radius: 30px;
-    text-align: center;
-    margin-top: 10px;
-    height: 30px;;
-    border: 1px solid #000;
+#selectcate {
+  width: 230px;
+  border-radius: 30px;
+  text-align: center;
+  margin-top: 10px;
+  height: 30px;
+  border: 1px solid #000;
 }
-.addbtn{
-    width: 70px;
-    height: 30px;
-    color: #fff;
-    background: green;
-    border: none;
-    cursor: pointer;
-    border-radius: 30px;
-    margin-top: 20px;
-    margin-left: 100px;
+.addbtn {
+  width: 70px;
+  height: 30px;
+  color: #fff;
+  background: green;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  margin-top: 20px;
+  margin-left: 100px;
+}
+table,
+tr,
+th,
+td {
+  border: 1px solid #000;
+  border-collapse: collapse;
 }

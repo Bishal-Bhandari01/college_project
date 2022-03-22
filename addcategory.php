@@ -85,13 +85,11 @@
                 </div>
                 <div class="username">
                     <label>Upload Image</label><br>
-                    <input type="file" name="uploadfile"
-                    class="prodimg" 
-                    style="
+                    <input type="file" name="uploadfile" class="prodimg" style="
                         border-radius: 0px;
                         border: none;
                         width: 350px;
-                    "/>
+                    " />
                 </div>
                 <div class="btn">
                     <button type="submit" name="add_product" class="addbtn">Add</button>
@@ -108,26 +106,21 @@
     </script>
 
     <?php
-    
-    if($conn){
-        
-        $prod_name = $_POST["prodname"];
-        $prod_price = $_POST["prodprice"];
-        $prod_cate = $_POST["selectcate"];
-        $filename = $_FILES["uploadfile"]["name"];
 
-        // if($pro_name==null & $)
-        if($_SERVER['REQUEST_METHOD']=='POST'){
-            $sqli = "INSERT INTO `product`(`product_name`, `product_price`, `category`, `image`) VALUES ('".$prod_name."','".$prod_price."','".$prod_cate."','".$filename."')";
+    if ($conn) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $prod_name = $_POST["prodname"];
+            $prod_price = $_POST["prodprice"];
+            $prod_cate = $_POST["selectcate"];
+            $filename = $_FILES["uploadfile"]["name"];
+            $sqli = "INSERT INTO `product`(`product_name`, `product_price`, `category`, `image`) VALUES ('" . $prod_name . "','" . $prod_price . "','" . $prod_cate . "','" . $filename . "')";
 
-            if(mysqli_query($conn, $sqli)){
+            if (mysqli_query($conn, $sqli)) {
                 echo "<script>
-                    alert('data has been updated');
-                </script>";
+                        alert('data has been updated');
+                    </script>";
             }
-    
         }
-
     }
 
     ?>
@@ -173,6 +166,8 @@
                                 <td><?php echo $row['product_price'] ?></td>
                                 <td><?php echo $row['category'] ?></td>
                                 <td>
+                                    <a href="edit.php?id=<?php echo $row['product_id'] ?>"
+                                    style="margin-right: 10px;">Edit</a>
                                     <a href="delete.php?id=<?php echo $row['product_id'] ?>" onclick="return confirm('Are you sure you want to delete this')">delete</a>
                                 </td>
                             </tr>
