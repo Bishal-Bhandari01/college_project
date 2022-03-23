@@ -62,12 +62,12 @@
                     var form = document.getElementById("formtwo");
                     form.style.display = "block";
                 }
-            </script>
+                </script>
         </div>
     </section>
     <section class="main">
         <div class="max-width">
-            
+
             <form id="formtwo" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" enctype="multipart/form-data" style="position: relative;
             left: 35%;
             padding-top: 8rem;

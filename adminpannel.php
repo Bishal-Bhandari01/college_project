@@ -46,27 +46,19 @@ session_start();
         </div>
     </header>
 
-    <section class="home">
+    <section class="home" style="
+        display: flex;
+        justify-content: center;
+    ">
         <div class="max-width">
-            <div class="category">
-                <label class="cate">Category: </label>
-                <select id="shoe_category">
-                    <option>Select your category</option>
-                    <option>Nike</option>
-                    <option>Adidas</option>
-                    <option>Gold Star</option>
-                </select>
-            </div>
             <div class="buttonssection">
-                <button onclick="addperson()"
-                    style="width:100px;height:30px;
+                <button onclick="addperson()" style="width:100px;height:30px;
                     border-radius:12px; border:none;
                     background-color: green;color:#fff;
                     margin-left: 70px;">
                     Add person
                 </button>
-                <button onclick="additems()"
-                    style="width:100px;height:30px;
+                <button onclick="additems()" style="width:100px;height:30px;
                     border-radius:12px; border:none;
                     background-color: green;color:#fff">
                     Add items
@@ -76,18 +68,63 @@ session_start();
                 function addperson() {
                     window.location.href = "adduserandadmin.php";
                 }
-                function additems(){
+
+                function additems() {
                     window.location.href = "addcategory.php";
                 }
             </script>
-            <form class="search" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                <input type="text" name="search" placeholder="Search..." id="searchinput">
-                <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
         </div>
     </section>
+
+    <main class="cardone">
+        <div class="max-width">
+            <div class="cardcontent">
+                <?php
+                $sqli = "SELECT * FROM product";
+                $result = mysqli_query($conn, $sqli);
+                $row = mysqli_num_rows($result);
+                echo '<p style="
+                    opacity: 70%;
+                    font-size: 30px;
+                ">
+                        ' . $row . '
+                    </p>';
+                ?>
+                <p>Total Product</p>
+            </div>
+        </div>
+    </main>
+
+    <main class="cardtwo">
+        <div class="max-width">
+            <div class="cardcontent">
+            <?php
+                $sqli = "SELECT * FROM user";
+                $result = mysqli_query($conn, $sqli);
+                $row = mysqli_num_rows($result);
+                echo '<p style="
+                    opacity: 70%;
+                    font-size: 30px;
+                ">
+                        ' . $row . '
+                    </p>';
+                ?>
+                <p>Total Users</p>
+            </div>
+        </div>
+    </main>
+
+    <main class="cardthree">
+        <div class="max-width">
+            <div class="cardcontent">
+                <p style="
+                    opacity: 70%;
+                    font-size: 30px;
+                ">50</p>
+                <p>Total Order</p>
+            </div>
+        </div>
+    </main>
 
 
     <?php
@@ -99,6 +136,7 @@ session_start();
         }
     }
     ?>
+
 </body>
 
 </html>
