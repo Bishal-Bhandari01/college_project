@@ -26,7 +26,7 @@
             </div>
             <ul>
                 <li>
-                    <a href="#">Home</a>
+                    <a href="adminpannel.php">Home</a>
                 </li>
                 <li>
                     <a href="#">Contact us</a>
@@ -45,7 +45,7 @@
     <section>
         <div class="max-width">
             <div class="addbtn2">
-                <button onclick="addprod()" style="
+                <button id="btn" onclick="addprod()" style="
                     position: absolute;
                     right: 10%;
                     top: 14%;
@@ -57,14 +57,21 @@
                     height: 30px;
                 ">Add product</button>
             </div>
+            <script>
+                function addprod() {
+                    var form = document.getElementById("formtwo");
+                    form.style.display = "block";
+                }
+            </script>
         </div>
     </section>
     <section class="main">
         <div class="max-width">
-            <form id="form2" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" enctype="multipart/form-data" style="position: relative;
+            
+            <form id="formtwo" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" enctype="multipart/form-data" style="position: relative;
             left: 35%;
             padding-top: 8rem;
-            display: none">
+            display: none;">
                 <h1 class="title">Add Product</h1>
                 <div class="username">
                     <label> Product Name</label><br>
@@ -97,13 +104,7 @@
             </form>
         </div>
     </section>
-    <script>
-        var form = document.getElementById("form2");
 
-        function addprod() {
-            form.style.display = "block";
-        }
-    </script>
 
     <?php
 
@@ -113,16 +114,20 @@
             $prod_price = $_POST["prodprice"];
             $prod_cate = $_POST["selectcate"];
             $filename = $_FILES["uploadfile"]["name"];
+            $tempname = $_FILES["uploadfile"]["tmp_name"];
+            $folder = "assets/pictures/" . $filename;
             $sqli = "INSERT INTO `product`(`product_name`, `product_price`, `category`, `image`) VALUES ('" . $prod_name . "','" . $prod_price . "','" . $prod_cate . "','" . $filename . "')";
+
+            move_uploaded_file($tempname, $folder);
 
             if (mysqli_query($conn, $sqli)) {
                 echo "<script>
+                        window.location.href = './adminpannel.php';
                         alert('data has been updated');
                     </script>";
             }
         }
     }
-
     ?>
 
     <section>
@@ -166,8 +171,7 @@
                                 <td><?php echo $row['product_price'] ?></td>
                                 <td><?php echo $row['category'] ?></td>
                                 <td>
-                                    <a href="edit.php?id=<?php echo $row['product_id'] ?>"
-                                    style="margin-right: 10px;">Edit</a>
+                                    <a href="edit.php?id=<?php echo $row['product_id'] ?>" style="margin-right: 10px;">Edit</a>
                                     <a href="delete.php?id=<?php echo $row['product_id'] ?>" onclick="return confirm('Are you sure you want to delete this')">delete</a>
                                 </td>
                             </tr>
