@@ -85,9 +85,9 @@
                     <label>Category: </label>
                     <select name="selectcate" id="selectcate" class="prodctae">
                         <option value="---" style="text-align: center;">---</option>
-                        <option value="nike">Nike</option>
-                        <option value="adidas">Adidas</option>
-                        <option value="goldstar">GoldStar</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Adidas">Adidas</option>
+                        <option value="Goldstar">GoldStar</option>
                     </select>
                 </div>
                 <div class="username">
@@ -166,7 +166,7 @@
                     ?>
                             <tr>
                                 <td><?php echo $row['product_id'] ?></td>
-                                <td><?php echo $row['image'] ?></td>
+                                <td><img src="./assets/pictures/<?php echo $row['image'] ?>" style="width:80px;margin-top: 5px; height: auto;"></td>
                                 <td><?php echo $row['product_name'] ?></td>
                                 <td><?php echo $row['product_price'] ?></td>
                                 <td><?php echo $row['category'] ?></td>

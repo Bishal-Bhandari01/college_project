@@ -1,5 +1,7 @@
+<?php include './dbconn.php' ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,10 +16,10 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.css" integrity="sha512-E+53kXnJyuZFSz75xSmTfCpUNj3gp9Bd80TeQQMTPJTVWDRHPOpEYczGwWtsZXvaiz27cqvhdH8U+g/NMYua3A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
 
-    <nav class="navbar"
-    style="border-radius: 0px;">
+    <nav class="navbar" style="border-radius: 0px;">
         <div class="max-width">
             <div class="logo">
                 <p>logo</p>
@@ -58,6 +60,38 @@
                     <i class="fas fa-search"></i>
                 </button>
             </div>
+
+        </div>
+    </section>
+
+    <section class="someCard"
+    style="
+        margin-left: 100px;
+    ">
+        <div class="max-width">
+            <?php
+
+            $selected_query = "SELECT * FROM product";
+            $result = mysqli_query($conn, $selected_query);
+            if (mysqli_num_rows($result)) {
+                while ($row = mysqli_fetch_assoc($result)) {
+
+            ?>
+                    <div class="card">
+                        <img src="./assets/pictures/<?php echo $row['image'] ?>" style="width:50%; height: 24%">
+                        <div class="container">
+                            <h5><?php echo $row['product_name'] ?></h5>
+                            <p>Price: <?php echo $row['product_price'] ?></p>
+                            <p>category: <?php echo $row['category'] ?></p>
+                        </div>
+                        <button class="orderbtn">
+                            Order
+                        </button>
+                    </div>
+            <?php
+                }
+            }
+            ?>
         </div>
     </section>
 
@@ -67,6 +101,7 @@
         </div>
     </footer>
 
-    <script src="./assets/js/main.js"></script>    
+    <script src="./assets/js/main.js"></script>
 </body>
+
 </html>
