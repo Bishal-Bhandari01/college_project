@@ -84,9 +84,6 @@
                             <p>Price: <?php echo $row['product_price'] ?></p>
                             <p>category: <?php echo $row['category'] ?></p>
                         </div>
-                        <button class="orderbtn">
-                            Order
-                        </button>
                     </div>
             <?php
                 }
