@@ -98,6 +98,9 @@
                         width: 350px;
                     " />
                 </div>
+                <div class="discription">
+                    <textarea name="discription" class="form-control" placeholder="Discription about"></textarea>
+                </div>
                 <div class="btn">
                     <button type="submit" name="add_product" class="addbtn">Add</button>
                 </div>

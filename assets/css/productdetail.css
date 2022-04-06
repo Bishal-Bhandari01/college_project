@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Kanit", sans-serif;
+  outline: none;
+}
+.max-width {
+  max-width: 1300;
+  padding: 0 80px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  background: rgba(15, 15, 13, 0.623);
+  padding: 20px 0;
+  color: #fff;
+}
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+ul {
+  float: right;
+  margin-bottom: 5px;
+}
+
+ul li {
+  display: inline-block;
+}
+ul li a {
+  margin-right: 30px;
+  color: #fff;
+}
+
+/* product section styling here */
+.product {
+  display: flex;
+  padding-top: 130px;
+  height: 350px;
+  width: 100%;
+  background-color: rgb(138, 133, 133);
+}
+
+/* product image styling here */
+.product .image img {
+  width: 300px;
+  height: auto;
+}
+.product .order {
+  position: absolute;
+  left: 80%;
+  top: 30%;
+}
+.product .order .orderbtn {
+  width: 160px;
+  height: 40px;
+  border: 3px solid green;
+  border-radius: 60px;
+  font-size: 20px;
+  transition: all 0.5s ease-in-out;
+}
+.product .order .orderbtn:hover {
+  color: #ffffff;
+  background-color: green;
+}
+.product .productname {
+  font-size: 25px;
+  margin-left: 60px;
+}
+.price{
+  font-size: 25px;
+  margin-top: 20px;
+  height: 30px;
+}
+.price span{
+  opacity: 80%;
+}
+.quantity{
+  margin-left: 120px;
+}
+.category{
+  height: 30px;
+  margin-top: 40px;
+  width: 50px;
+  border-radius: 7px;
+  border: none;
+}

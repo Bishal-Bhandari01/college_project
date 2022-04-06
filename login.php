@@ -80,10 +80,10 @@ include './dbconn.php';
                             $result = mysqli_fetch_assoc($stmt);
 
                             if(md5($passd) === $result['Password']){
-                                echo $result['Password'];
-                                header('location: user.html');
+                                echo "<script>alert('Login Successfully');</script>";
+                                header('location: user.php');
                             }else{
-                                header('Location: register.php');
+                                echo "<script>alert('Email or password does't match');</script>";
                             }
 
                         }
