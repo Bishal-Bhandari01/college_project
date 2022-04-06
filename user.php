@@ -1,5 +1,8 @@
 <?php include './dbconn.php' ?>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3fb9457f7e2808d2de3e664f9e9131d3cac17745
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,13 +45,23 @@
             </ul>
         </div>
     </nav>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3fb9457f7e2808d2de3e664f9e9131d3cac17745
     <section class="home">
         <div class="max-width">
             <div class="category">
                 <label class="cate">Category: </label>
                 <select id="shoe_category">
+<<<<<<< HEAD
                     <option value="casual">Casual</option>
                     <option value="">Adidas</option>
+=======
+                    <option>Select your category</option>
+                    <option>Nike</option>
+                    <option>Adidas</option>
+>>>>>>> 3fb9457f7e2808d2de3e664f9e9131d3cac17745
                     <option>Gold Star</option>
                 </select>
             </div>
@@ -75,24 +88,15 @@
 
             ?>
                     <div class="card">
-                        <div class="prodimg" style="
-                            width: 100%;
-                            height: auto;
-                        ">
-                            <img src="./assets/pictures/<?php echo $row['image'] ?>" style="width:120px; height: auto">
+                        <img src="./assets/pictures/<?php echo $row['image'] ?>" style="width:50%; height: 24%">
+                        <div class="container">
+                            <h5><?php echo $row['product_name'] ?></h5>
+                            <p>Price: <?php echo $row['product_price'] ?></p>
+                            <p>category: <?php echo $row['category'] ?></p>
                         </div>
-
-                        <div class="container" style="margin-top: 6px;">
-                            <h5>
-                                <?php echo $row['product_name'] ?>
-                            </h5>
-                            
-                        </div>
-                        <div class="btn">
-                            <a href="product_detail.php?id=<?php echo $row['product_id'] ?>" class="orderbtn">
-                            More Info
-                            </a>
-                        </div>
+                        <button class="orderbtn">
+                            Order
+                        </button>
                     </div>
             <?php
                 }
@@ -101,9 +105,6 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-content">Thank you for visiting us.</div>
-    </footer>
 
 </body>
 
