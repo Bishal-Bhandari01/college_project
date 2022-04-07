@@ -1,3 +1,5 @@
+<?php include 'dbconn.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,23 +45,34 @@
 
     <section class="product">
         <div class="max-width">
-            <div class="image">
-                <img src="./assets/pictures/adidas.webp" />
-            </div>
-            <div class="productname">
-                <h3>Some shoes</h3>
-                <p class="price">Price: <span>1200</span></p>
-                <div class="quantity">
-                    <label>Quantity: </label>
-                    <input type="number" class="category" name="quantity">
+            <?php
+
+            $id = $_GET['id'];
+
+            $selected_query = "SELECT * FROM product WHERE product_id=$id";
+            $result = mysqli_query($conn, $selected_query);
+            $row = mysqli_fetch_assoc($result);
+
+            ?>
+                <div class="image">
+                    <img src="./assets/pictures/<?php echo $row['image'] ?>" />
                 </div>
-            </div>
-            <div class="order">
-                <button class="orderbtn">Order now</button>
-            </div>
+                <div class="productname">
+                    <h3><?php echo $row['product_name'] ?></h3>
+                    <p class="price">Price: Rs. <span><?php echo $row['product_price'] ?></span></p>
+                    <div class="quantity">
+                        <label>Quantity: </label>
+                        <button id="minus">-</button>
+                        <input type="text" style="text-align:center" class="category" id="value" name="quantity" value="1">
+                        <button id="plus" onclick="plus()">+</button>
+                    </div>
+                </div>
+                <div class="order">
+                    <button class="orderbtn">Order now</button>
+                </div>
         </div>
     </section>
-
+    <script src="./assets/js/product_detail.js"></script>
 </body>
 
 </html>

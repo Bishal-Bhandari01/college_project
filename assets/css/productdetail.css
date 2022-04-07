@@ -87,7 +87,20 @@ ul li a {
 .category{
   height: 30px;
   margin-top: 40px;
-  width: 50px;
+  width: 40px;
+  border-radius: 7px;
+  border: none;
+}
+#minus{
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  font-size: 15px;
+  border: none;
+}
+#plus{
+  width: 30px;
+  height: 30px;
   border-radius: 7px;
   border: none;
 }
