@@ -1,4 +1,4 @@
-<?php 
+<?php
 include './dbconn.php';
 ?>
 
@@ -18,7 +18,7 @@ include './dbconn.php';
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.css" integrity="sha512-E+53kXnJyuZFSz75xSmTfCpUNj3gp9Bd80TeQQMTPJTVWDRHPOpEYczGwWtsZXvaiz27cqvhdH8U+g/NMYua3A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
 </head>
 
 <body>
@@ -58,7 +58,7 @@ include './dbconn.php';
                 </div>
             </div>
             <div class="form">
-                <form id="form" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+                <form id="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                     <h1 class="title">Sign In</h1>
                     <div class="username">
                         <input type="email" class="email" id="email" name="email" placeholder="Enter your valid email">
@@ -73,19 +73,20 @@ include './dbconn.php';
                             $passd = trim($_POST['password']);
                             $useremail = trim($_POST['email']);
 
-                            $query = "SELECT Password FROM user WHERE email = '".$useremail."'";
+                            $query = "SELECT Password FROM user WHERE email = '" . $useremail . "'";
 
                             $stmt = mysqli_query($conn, $query);
 
                             $result = mysqli_fetch_assoc($stmt);
 
-                            if(md5($passd) === $result['Password']){
-                                echo "<script>alert('Login Successfully');</script>";
+                            if (md5($passd) === $result['Password']) {
                                 header('location: user.php');
-                            }else{
+                                session_start();
+
+                                $_SESSION['username'] = $row['Username'];
+                            } else {
                                 echo "<script>alert('Email or password does't match');</script>";
                             }
-
                         }
                     }
 

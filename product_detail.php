@@ -1,4 +1,6 @@
 <?php include 'dbconn.php';
+session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +38,7 @@
                 </li>
                 <li>
                     <a href="./payment.html">
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-shopping-cart" name="shopping_cart"></i>
                     </a>
                 </li>
             </ul>
@@ -45,34 +47,56 @@
 
     <section class="product">
         <div class="max-width">
-            <?php
+            <form style="width:100%; display: inline-block; height: 300px;" action="managecart.php" method="POST">
+                <?php
 
-            $id = $_GET['id'];
+                $id = $_GET['id'];
 
-            $selected_query = "SELECT * FROM product WHERE product_id=$id";
-            $result = mysqli_query($conn, $selected_query);
-            $row = mysqli_fetch_assoc($result);
+                $selected_query = "SELECT * FROM product WHERE product_id=$id";
+                $result = mysqli_query($conn, $selected_query);
+                $row = mysqli_fetch_assoc($result);
 
-            ?>
-                <div class="image">
-                    <img src="./assets/pictures/<?php echo $row['image'] ?>" />
-                </div>
-                <div class="productname">
-                    <h3><?php echo $row['product_name'] ?></h3>
+                ?>
+                <img src="./assets/pictures/<?php echo $row['image'] ?>" />
+                <div class="somedetails">
+                    <h3 class="productname"><?php echo $row['product_name'] ?></h3>
+                    <input type="hidden" name="producthidden_name" value="<?php echo $row['product_name'] ?>" />
                     <p class="price">Price: Rs. <span><?php echo $row['product_price'] ?></span></p>
-                    <div class="quantity">
-                        <label>Quantity: </label>
-                        <button id="minus">-</button>
-                        <input type="text" style="text-align:center" class="category" id="value" name="quantity" value="1">
-                        <button id="plus" onclick="plus()">+</button>
-                    </div>
+                    <input type="hidden" name="producthidden_price" value="<?php echo $row['product_price'] ?>" />
+                    <label>Quantity: </label>
+                    <input type="button" id="minus" onclick="minus()" value="-">
+                    <input type="text" style="text-align:center" class="category" id="value" name="quantity" value="1">
+                    <input type="button" id="plus" onclick="plus()" value="+">
                 </div>
                 <div class="order">
-                    <button class="orderbtn">Order now</button>
+                    <input type="button" name="add_to_cart" class="orderbtn" value="Order now" />
                 </div>
         </div>
+        </form>
     </section>
-    <script src="./assets/js/product_detail.js"></script>
+
+    <main class="description">
+        <div class="max-width">
+            <div class="desc">
+                <h1>Description</h1>
+            </div>
+        </div>
+    </main>
+    <script>
+        function plus() {
+            var value = parseInt(document.getElementById('value').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            document.getElementById('value').value = value;
+        }
+
+        function minus() {
+            var value = parseInt(document.getElementById('value').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value--;
+            document.getElementById('value').value = value;
+        }
+    </script>
 </body>
 
 </html>

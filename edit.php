@@ -1,3 +1,4 @@
+<?php include 'dbconn.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,21 +46,29 @@
     <section class="main">
         <div class="max-width">
 
+            <?php
+            $id = $_GET['id'];
+
+            $sqli = "SELECT * FROM product WHERE product_id=$id";
+            $result = mysqli_query($conn,$sqli);
+            $row = mysqli_fetch_assoc($result);
+
+            ?>
             <form id="formtwo" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" enctype="multipart/form-data" style="position: relative;
             left: 35%;
             padding-top: 8rem;">
-                <h1 class="title">Add Product</h1>
+                <h1 class="title">Edit Product</h1>
                 <div class="username">
                     <label> Product Name</label><br>
-                    <input type="text" name="prodname" placeholder="  Enter product name" class="prodname" required>
+                    <input type="text" name="prodname" value="<?php echo $row['product_name']; ?>" class="prodname" required>
                 </div>
                 <div class="username">
                     <label> Price</label><br>
-                    <input type="number" name="prodprice" placeholder=" Enter price" class="prodprice" required>
+                    <input type="text" name="prodprice" value="Rs. <?php echo $row['product_price'];?>" class="prodprice" required>
                 </div>
                 <div class="username">
                     <label>Category: </label>
-                    <select name="selectcate" id="selectcate" class="prodctae">
+                    <select name="selectcate" id="selectcate"cy class="prodctae">
                         <option value="---" style="text-align: center;">---</option>
                         <option value="Nike">Nike</option>
                         <option value="Adidas">Adidas</option>

@@ -7,7 +7,7 @@
   outline: none;
 }
 .max-width {
-  max-width: 1300;
+  max-width: 1200;
   padding: 0 80px;
   overflow: hidden;
   display: flex;
@@ -41,21 +41,22 @@ ul li a {
 /* product section styling here */
 .product {
   display: flex;
-  padding-top: 130px;
+  padding-top: 110px;
   height: 350px;
   width: 100%;
-  background-color: rgb(138, 133, 133);
+}
+.product .max-width{
+  width: 100%;
 }
 
 /* product image styling here */
-.product .image img {
-  width: 300px;
+.product img {
+  width: 230px;
   height: auto;
 }
 .product .order {
-  position: absolute;
-  left: 80%;
-  top: 30%;
+  float: right;
+  margin-top: 60px;
 }
 .product .order .orderbtn {
   width: 160px;
@@ -63,26 +64,29 @@ ul li a {
   border: 3px solid green;
   border-radius: 60px;
   font-size: 20px;
+  background-color: #fff;
   transition: all 0.5s ease-in-out;
 }
 .product .order .orderbtn:hover {
   color: #ffffff;
   background-color: green;
 }
+.somedetails{
+  float: right;
+  text-align: left;
+}
 .product .productname {
   font-size: 25px;
-  margin-left: 60px;
+  width: 100%;
+  margin-left: 30px;
 }
 .price{
-  font-size: 25px;
-  margin-top: 20px;
+  font-size: 20px;
+  margin-top: 25px;
   height: 30px;
 }
 .price span{
   opacity: 80%;
-}
-.quantity{
-  margin-left: 120px;
 }
 .category{
   height: 30px;
@@ -103,4 +107,16 @@ ul li a {
   height: 30px;
   border-radius: 7px;
   border: none;
+}
+/* description section here */
+.description{
+  display: inline-block;
+  width: 100%;
+}
+.description .desc{
+  display: flex;
+  width: 100%;
+  padding-top: 30px;
+  justify-content: center;
+  text-align: center;
 }
