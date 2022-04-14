@@ -21,29 +21,7 @@ session_start();
 
 <body>
 
-    <nav class="navbar">
-        <div class="max-width">
-            <div class="logo">
-                <p>logo</p>
-            </div>
-            <ul>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Contact us</a>
-                </li>
-                <li>
-                    <a href="#">About us</a>
-                </li>
-                <li>
-                    <a href="./payment.html">
-                        <i class="fas fa-shopping-cart" name="shopping_cart"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <?php include "header1.php" ?>
 
     <section class="product">
         <div class="max-width">

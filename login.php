@@ -23,28 +23,7 @@ include './dbconn.php';
 
 <body>
 
-    <nav class="navbar" style="background:gray;
-            border-radius:0">
-        <div class="max-width">
-            <div class="logo">
-                <img src="./assets/pictures/project_logo.png" style="width:60px;
-                                                                height:25px;
-                                                                filter:brightness(0) invert(1);">
-            </div>
-            <ul>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Contact us</a>
-                </li>
-                <li>
-                    <a href="#">About us</a>
-                </li>
-
-            </ul>
-        </div>
-    </nav>
+    <?php include "header.php"; ?>
 
     <main class="home">
         <div class="max-width">
@@ -80,10 +59,9 @@ include './dbconn.php';
                             $result = mysqli_fetch_assoc($stmt);
 
                             if (md5($passd) === $result['Password']) {
-                                header('location: user.php');
                                 session_start();
-
-                                $_SESSION['username'] = $row['Username'];
+                                $_SESSION['$useremail'] = $useremail;
+                                header('location: user.php');
                             } else {
                                 echo "<script>alert('Email or password does't match');</script>";
                             }

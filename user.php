@@ -1,4 +1,8 @@
-<?php include './dbconn.php' ?>
+<?php
+include './dbconn.php';
+// session_start();
+// echo session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,29 +22,8 @@
 
 <body>
 
-    <nav class="navbar">
-        <div class="max-width">
-            <div class="logo">
-                <p>logo</p>
-            </div>
-            <ul>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Contact us</a>
-                </li>
-                <li>
-                    <a href="#">About us</a>
-                </li>
-                <li>
-                    <a href="./payment.html">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <?php include "header1.php" ?>
+
     <section class="home">
         <div class="max-width">
             <div class="category">
@@ -67,43 +50,50 @@
         margin-left: 100px;
     ">
         <div class="max-width">
-            <form action="/managecart.php" method="POST">
-                <?php
+            <?php
 
-                $selected_query = "SELECT * FROM product";
-                $result = mysqli_query($conn, $selected_query);
-                if (mysqli_num_rows($result)) {
-                    while ($row = mysqli_fetch_assoc($result)) {
+            $selected_query = "SELECT * FROM product";
+            $result = mysqli_query($conn, $selected_query);
+            if (mysqli_num_rows($result)) {
+                while ($row = mysqli_fetch_assoc($result)) {
 
-                ?>
-                        <div class="card">
-                            <table>
-                                <tr>
-                                    <img src="./assets/pictures/<?php echo $row['image'] ?>" style="width:40%; height: auto">
-                                </tr>
-
-                                <tr>
-                                    <div class="container">
-                                        <h5><?php echo $row['product_name'] ?></h5>
-                                        <p>Price: Rs.<?php echo $row['product_price'] ?></p>
-                                        <p>category: <?php echo $row['category'] ?></p>
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="orderbtncon">
-                                        <a href="product_detail.php?id=<?php echo $row['product_id'] ?>" class="orderbtn">More info</a>
-                                    </div>
-                                </tr>
-                            </table>
+            ?>
+                    <div class="card" style="margin-right: 10px;">
+                        <img src="./assets/pictures/<?php echo $row['image'] ?>" style="width:40%; height: auto">
+                        <div class="container">
+                            <input type="hidden" value="<?php echo $row['product_id'] ?>">
+                            <h5><?php echo $row['product_name'] ?></h5>
+                            <p>Price: Rs.<?php echo $row['product_price'] ?></p>
+                            <p>category: <?php echo $row['category'] ?></p>
                         </div>
-                <?php
-                    }
+                        <div class="buttons">
+                            <div class="orderbtncon">
+                                <a href="product_detail.php?id=<?php echo $row['product_id'] ?>" class="orderbtn">
+                                    <i class="fas fa-info" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <button style="border:none;
+                                    width: 45px;
+                                    height: 45px;
+                                    border-radius: 50%;
+                                    cursor:pointer;
+                                    margin-top: 0px;" class="modify-item">
+                                <a style="text-decoration: none;
+                                            color: #000;
+                                            font-size:20px" type="submit" href="managecart.php?id=<?php echo $row['product_id']; ?>">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </button>
+
+                        </div>
+                    </div>
+            <?php
                 }
-                ?>
-            </form>
+            }
+            ?>
+        </div>
         </div>
     </section>
-
 
 </body>
 
