@@ -173,6 +173,7 @@
                         echo "<script>alert('Login Successfully');
                                     window.location.href='./adminpannel.php';
                                     </script>;";
+                        $_SESSION['$ademail'] = $ademail;
                     } else {
                         echo "incorrect password";
                     }

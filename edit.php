@@ -67,7 +67,7 @@
                     <input type="text" name="prodprice" value="Rs. <?php echo $row['product_price'];?>" class="prodprice" required>
                 </div>
                 <div class="username">
-                    <label>Category: </label>
+                    <label>Brands: </label>
                     <select name="selectcate" id="selectcate"cy class="prodctae">
                         <option value="---" style="text-align: center;">---</option>
                         <option value="Nike">Nike</option>

@@ -11,63 +11,6 @@
   display: flex;
   justify-content: space-between;
 }
-.navbar {
-  position: fixed;
-  width: 100%;
-  z-index: 999;
-  background: rgba(15, 15, 13, 0.623);
-  padding: 20px 0;
-  color: #fff;
-}
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-}
-ul {
-  float: right;
-  margin-bottom: 5px;
-}
-
-ul li {
-  display: inline-block;
-  text-align: center;
-  padding-right: 30px;
-}
-ul li a {
-  color: #fff;
-}
-
-/* home start here */
-.home {
-  padding: 7% 2%;
-  width: 100%;
-}
-#shoe_category {
-  width: 200px;
-  text-align: center;
-  border: 1px solid #000;
-  border-radius: 60px;
-}
-.search {
-  float: right;
-}
-.search #searchinput {
-  width: 260px;
-  height: 25px;
-  text-align: center;
-  border-radius: 30px;
-  border: 1px solid #000;
-}
-.search .search-btn {
-  border-radius: 30px;
-  width: 29px;
-  height: 28px;
-  color: black;
-  font-size: 15px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
 
 /* Card styling here */
 .someCard {
@@ -77,44 +20,28 @@ ul li a {
 .card {
   display: inline-block;
   border-radius: 12px;
-  width: 260px;
+  width: 280px;
   height: auto;
-  border: 2px solid black;
+  margin-right: 5px;
+  border: 1px solid black;
   padding: 25px;
   font-size: 30px;
   text-align: center;
   transition: all 0.6s ease-in-out;
 }
 .card img {
-  width: 75px;
+  width: 50%;
   height: auto;
+}
+.container{
+  height: 170px;
+
 }
 .container p {
   font-size: 20px;
 }
 .buttons {
-  width: 100%;
   margin-top: 10px;
-  border-radius: 30px;
-}
-.orderbtncon {
-  width: 45px;
-  height: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  float: left;
-  font-size: 20px;
-  border: 2px solid rgb(0, 68, 253);
-  border-radius: 50%;
-  transition: all 0.6s ease-in-out;
-}
-.orderbtn {
-  color: rgb(0, 68, 253);
-}
-.orderbtncon:hover {
-  background: rgb(0, 68, 253);
-  color: white;
 }
 
 /* footer styling */

@@ -1,0 +1,53 @@
+/* main start here */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Kanit", sans-serif;
+}
+.max-width {
+  max-width: 1300;
+  padding: 0 60px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* setting start here */
+.title {
+  text-align: center;
+}
+
+input {
+  width: 300px;
+  height: 30px;
+  border-radius: 7px;
+  border: 1px solid #000;
+  text-align: center;
+}
+
+.username {
+  margin-top: 15px;
+}
+
+#selectrole {
+  width: 300px;
+  height: 28px;
+  border-radius: 6px;
+}
+
+.btn {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.addbtn {
+  width: 120px;
+  border-radius: 6px;
+  border: none;
+  height: 30px;
+  background: rgb(3, 182, 3);
+  color: #fff;
+  font-size: 17px;
+}

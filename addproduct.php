@@ -36,7 +36,7 @@
                 </li>
                 <li>
                     <a href="./admin.php">
-                        <i class="fas fa-solid fa-user" style="color:black"></i>
+                        <i class="fas fa-solid fa-user" style="color:white"></i>
                     </a>
                 </li>
             </ul>
@@ -62,7 +62,7 @@
                     var form = document.getElementById("formtwo");
                     form.style.display = "block";
                 }
-                </script>
+            </script>
         </div>
     </section>
     <section class="main">

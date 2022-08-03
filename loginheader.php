@@ -1,16 +1,10 @@
-<?php
-include "./dbconn.php";
-session_start();
-$_SESSION['$useremail'];
-?>
 <style>
-    button {
+    button{
         background: none;
-        transition: all 0.5s ease-in-out;
+        transition:all 0.5s ease-in-out;
     }
-
-    button:hover {
-        background: crimson;
+    button:hover{
+        background:crimson;
     }
 </style>
 <nav class="navbar" style="background:gray;
@@ -26,12 +20,7 @@ $_SESSION['$useremail'];
                 <a href="#">Home</a>
             </li>
             <li>
-                <p><?php echo $_SESSION['$useremail']; ?></p>
-            </li>
-            <li>
-                <a href="./admin.php">
-                    <button type="button" style="width: 5rem;height: 35px; border:2px solid crimson; border-radius: 7px;color: white; text-align: center;">logout <?php session_destroy(); ?></button>
-                </a>
+                <a href="#">Contact us</a>
             </li>
         </ul>
     </div>

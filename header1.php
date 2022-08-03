@@ -18,11 +18,13 @@ $row = mysqli_num_rows($result);
 <nav class="navbar">
     <div class="max-width">
         <div class="logo">
-            <p>logo</p>
+            <img src="./assets/pictures/project_logo.png" style="width:60px;
+                                                                height:25px;
+                                                                filter:brightness(0) invert(1);">
         </div>
         <ul>
             <li>
-                <a href="#">Home</a>
+                <a href="user.php">Home</a>
             </li>
             <li>
                 <a href="#">Contact us</a>
@@ -33,7 +35,7 @@ $row = mysqli_num_rows($result);
 
             <li>
                 <div class="cartbtn">
-                    <a href="managecart.php">
+                    <a href="./payment.php">
                         My Cart(<?php echo $row; ?>)
                     </a>
                 </div>
@@ -43,12 +45,11 @@ $row = mysqli_num_rows($result);
                     <button class="dropbtn"><?php echo $row1['username'] ?>
                     </button>
                     <form class="dropdown-content" method="POST">
-                        <a href="setting.php/?id=<?php echo $row1['id']; ?>" class="a">Setting</a>
-                        <input type="submit" class="a" name="logout" value="Log out"/>
+                        <input type="submit" class="a" name="logout" value="Log out" />
                         <?php
                         if (isset($_POST['logout'])) {
                             session_destroy();
-                            header('Location: login.php');
+                            header('Location: ../login.php');
                         }
                         ?>
                     </form>

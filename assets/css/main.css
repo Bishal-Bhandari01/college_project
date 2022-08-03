@@ -14,6 +14,7 @@
 }
 .navbar {
   position: fixed;
+  display: inline-block;
   width: 100%;
   z-index: 999;
   background: rgba(15, 15, 13, 0.623);
@@ -42,33 +43,6 @@ ul li a {
   padding: 7% 2%;
   width: 100%;
 }
-#shoe_category {
-  width: 200px;
-  text-align: center;
-  border: 1px solid #000;
-  border-radius: 60px;
-}
-.search {
-  float: right;
-}
-.search #searchinput {
-  width: 260px;
-  height: 25px;
-  text-align: center;
-  border-radius: 30px;
-  border: 1px solid #000;
-}
-.search .search-btn {
-  border-radius: 30px;
-  width: 29px;
-  height: 28px;
-  color: black;
-  font-size: 15px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
 /* Card styling here */
 .someCard {
   display: grid;
@@ -76,13 +50,17 @@ ul li a {
   margin-bottom: 50px;
 }
 .card {
-    border-radius: 12px;
-    width: 300px;
-    height: auto;
-    border: 1px solid black;
-    padding: 25px;
-    font-size: 25px;
-    text-align: center;
+  border-radius: 12px;
+  width: 300px;
+  height: auto;
+  border: 1px solid black;
+  padding: 25px;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 7rem;
+}
+.container {
+  margin-top: 20px;
 }
 
 /* footer styling */

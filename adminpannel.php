@@ -1,15 +1,11 @@
 <?php
 include "./dbconn.php";
-session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Pannel</title>
     <!-- css link -->
     <link rel="stylesheet" href="./assets/css/adminpannel.css">
@@ -22,29 +18,7 @@ session_start();
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="max-width">
-            <div class="logo">
-                <img src="./assets/pictures/project_logo.png" style="width:60px;height:25px; filter: brightness(0) invert(1);">
-            </div>
-            <ul>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Contact us</a>
-                </li>
-                <li>
-                    <a href="#">About us</a>
-                </li>
-                <li>
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-                        <button type="submit" class="logout" name="logout">Log out</button>
-                    </form>
-                </li>
-            </ul>
-        </div>
-    </header>
+    <?php include "./header.php"?>
 
     <section class="home" style="
         display: flex;
@@ -66,11 +40,11 @@ session_start();
             </div><br>
             <script>
                 function addperson() {
-                    window.location.href = "adduserandadmin.php";
+                    window.location.href = "adduser.php";
                 }
 
                 function additems() {
-                    window.location.href = "addcategory.php";
+                    window.location.href = "addproduct.php";
                 }
             </script>
         </div>

@@ -1,15 +1,10 @@
 <?php
 include './dbconn.php';
-// session_start();
-// echo session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User</title>
     <link rel="stylesheet" href="./assets/css/user.css">
     <!-- Font Awesome -->
@@ -21,33 +16,11 @@ include './dbconn.php';
 </head>
 
 <body>
-
-    <?php include "header1.php" ?>
-
-    <section class="home">
-        <div class="max-width">
-            <div class="category">
-                <label class="cate">Category: </label>
-                <select id="shoe_category">
-
-                    <option>Select your category</option>
-                    <option>Nike</option>
-                    <option>Adidas</option>
-                    <option>Gold Star</option>
-                </select>
-            </div>
-            <div class="search">
-                <input type="text" name="search" placeholder="Search..." id="searchinput">
-                <button type="button" class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-
-        </div>
-    </section>
+    <?php include "./header1.php" ?>
 
     <section class="someCard" style="
-        margin-left: 100px;
+        margin-left: 50px;
+        padding-top: 100px;
     ">
         <div class="max-width">
             <?php
@@ -58,33 +31,28 @@ include './dbconn.php';
                 while ($row = mysqli_fetch_assoc($result)) {
 
             ?>
-                    <div class="card" style="margin-right: 10px;">
-                        <img src="./assets/pictures/<?php echo $row['image'] ?>" style="width:40%; height: auto">
+                    <div class="card">
+                        <div class="image" style="height: 120px;">
+                            <img src="./assets/pictures/<?php echo $row['image'] ?>">
+                        </div>
                         <div class="container">
-                            <input type="hidden" value="<?php echo $row['product_id'] ?>">
                             <h5><?php echo $row['product_name'] ?></h5>
                             <p>Price: Rs.<?php echo $row['product_price'] ?></p>
-                            <p>category: <?php echo $row['category'] ?></p>
+                            <p>Brand: <?php echo $row['category'] ?></p>
                         </div>
-                        <div class="buttons">
-                            <div class="orderbtncon">
-                                <a href="product_detail.php?id=<?php echo $row['product_id'] ?>" class="orderbtn">
-                                    <i class="fas fa-info" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                            <button style="border:none;
-                                    width: 45px;
-                                    height: 45px;
-                                    border-radius: 50%;
-                                    cursor:pointer;
-                                    margin-top: 0px;" class="modify-item">
-                                <a style="text-decoration: none;
-                                            color: #000;
-                                            font-size:20px" type="submit" href="managecart.php?id=<?php echo $row['product_id']; ?>">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </a>
-                            </button>
-
+                        <div class="buttons" style="align-self: space-between;">
+                            <a href="managecart.php?id=<?php echo $row['product_id']; ?>">
+                                <button style="border:none;
+                        width: 100%;
+                        height: 45px;
+                        color: white;
+                        border-radius: 8px;
+                        background: green;
+                        cursor:pointer;" class="modify-item">
+                                    <i class="fas fa-shopping-cart">
+                                    </i>
+                                </button>
+                            </a>
                         </div>
                     </div>
             <?php

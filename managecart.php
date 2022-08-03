@@ -2,7 +2,6 @@
 session_start();
 $_SESSION['$useremail'];
 include "dbconn.php";
-include "header.php";
 
 if ($conn) {
 
@@ -24,8 +23,9 @@ if ($conn) {
     $product_name = $row['product_name'];
     $product_price = $row['product_price'];
     $product_category = $row['category'];
+    $product_image = $row['image'];
     
-    $sqli = "INSERT INTO manageitem(`username`,`useremail`,`productname`,`productprice`,`userContactNo`)VALUES('$username','$useremail','$product_name','$product_price','$usercontact')";
+    $sqli = "INSERT INTO manageitem(`username`,`useremail`,`productname`,`productprice`,`category`,`product_image`)VALUES('$username','$useremail','$product_name','$product_price','$product_category','$product_image')";
     $result1 = mysqli_query($conn, $sqli);
 
     header("Location: user.php");

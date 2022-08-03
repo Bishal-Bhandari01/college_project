@@ -1,5 +1,27 @@
-li {
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  background: rgba(15, 15, 13, 0.623);
+  padding: 20px 0;
+  color: #fff;
+}
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+ul {
+  float: right;
+  margin-bottom: 5px;
+}
+
+ul li {
+  display: inline-block;
   overflow: hidden;
+}
+ul li a {
+  margin-right: 30px;
+  color: #fff;
 }
 .dropdown {
   float: left;
@@ -22,6 +44,7 @@ li {
 }
 
 .dropdown-content .a {
+  width: 100%;
   color: black;
   padding: 8px 32px;
   background-color: #fff;

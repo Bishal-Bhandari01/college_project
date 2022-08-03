@@ -22,7 +22,8 @@
     <nav class="navbar" style="border-radius: 0px;">
         <div class="max-width">
             <div class="logo">
-                <p>logo</p>
+                <img src="./assets/pictures/project_logo.png" alt="project_logo"
+                style="width: 50px; height:auto; background: invert(1)">
             </div>
             <ul>
                 <li>
@@ -43,30 +44,7 @@
         </div>
     </nav>
 
-    <section class="home">
-        <div class="max-width">
-            <div class="category">
-                <label class="cate">Category: </label>
-                <select id="shoe_category">
-                    <option>Select your category</option>
-                    <option>Nike</option>
-                    <option>Adidas</option>
-                    <option>Gold Star</option>
-                </select>
-            </div>
-            <div class="search">
-                <input type="text" name="search" placeholder="Search..." id="searchinput">
-                <button type="button" class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="someCard" style="
-        margin-left: 100px;
-    ">
+    <section class="someCard">
         <div class="max-width">
             <?php
 
