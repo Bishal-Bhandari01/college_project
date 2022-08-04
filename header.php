@@ -1,7 +1,5 @@
 <?php
 include "./dbconn.php";
-session_start();
-$_SESSION['$useremail'];
 ?>
 <style>
     button {
@@ -24,14 +22,6 @@ $_SESSION['$useremail'];
         <ul>
             <li>
                 <a href="#">Home</a>
-            </li>
-            <li>
-                <p><?php echo $_SESSION['$useremail']; ?></p>
-            </li>
-            <li>
-                <a href="./admin.php">
-                    <button type="button" style="width: 5rem;height: 35px; border:2px solid crimson; border-radius: 7px;color: white; text-align: center;">logout <?php session_destroy(); ?></button>
-                </a>
             </li>
         </ul>
     </div>

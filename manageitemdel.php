@@ -1,9 +1,8 @@
 <?php
-
 include './dbconn.php';
-
-$manageid = $_GET['id'];
-$del = "DELETE FROM manageitem WHERE id = $manageid";
+$id = $_GET['id'];
+$del = "DELETE FROM manageitem WHERE id='$id'";
 mysqli_query($conn, $del);
-header("location: payment.php");
-?>
+if(mysqli_query($conn, $del)){
+    header('Location: ./payment.php');
+}

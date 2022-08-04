@@ -13,35 +13,6 @@
   display: flex;
   justify-content: space-between;
 }
-/* Navbar styling here */
-.navbar {
-  position: fixed;
-  width: 100%;
-  z-index: 999;
-  background: rgba(15, 15, 13, 0.623);
-  padding: 20px 0;
-  color: #fff;
-}
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-}
-ul {
-  float: right;
-  margin-bottom: 5px;
-}
-
-ul li {
-  display: inline-block;
-  overflow: hidden;
-}
-ul li a {
-  margin-right: 30px;
-  color: #fff;
-}
-.dropdown {
-  float: left;
-}
 
 .dropdown .dropbtn {
   font-size: 16px;
@@ -64,7 +35,7 @@ ul li a {
   color: black;
   padding: 8px 32px;
   background-color: #fff;
-  border:none;
+  border: none;
   font-size: 14px;
   text-decoration: none;
   display: block;
@@ -76,78 +47,34 @@ ul li a {
 
 /* home styling here */
 .home {
-  display: flex;
-
-}
-.card {
-  padding-top: 100px;
-}
-.cards-content{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 10px;
-  width: 700px;
-  height: 100px;
-  box-shadow: 6px 6px 10px -1px rgb(0 0 0 / 25%);
+  padding-top: 7rem;
 }
 img{
-  padding: 10px;
+  margin-top: 5px;
+  width: 60px;
 }
-a{
-  padding-right: 10px;
+table{
+  max-width: 100%;
 }
-.qtybtn{
-  display: flex;
+table,
+tr,
+thead,
+td {
+  border: 1px solid #000;
+  height: 40px;
+  border-collapse: collapse;
 }
-#qty{
-  width: 20px;
-  height: 20px;
-  text-align: center;
-}
-.button{
-  display: flex;
-  justify-content: center;
-  width: 40px;
-} 
-.fas{
-  color: red;
-}
-/* Payment btn styling here */
-.paymentbox{
-  width: 500px;
-  height: 70vh;
-  float: right;
-  border-radius: 12px;
-  margin-top: 130px;
-  box-shadow: 7px 7px 10px -1px rgb(0 0 0 / 40%);
-}
-.form-control{
-  margin-top: 20px;
-  text-align: center;
-}
-.form-control input{
-  width: 20rem;
-  height: 30px;
-  border: none;
-  border-bottom: 1px solid #000;
-  text-align: center;
-}
-.text{
-  font-size: 25px;
-}
-.totalamount{
-  margin-top: 20px;
-  text-align: center;
-}
-.payment{
-  margin-top: 20px;
-}
-.paymentbtn{
-  width: 100%;
-  height: 45px;
-  font-size: 20px;
-  background-color: green;
+thead {
+  background: crimson;
   color: white;
-  font-weight: bold;
+}
+td{
+  width: 9rem;
+  padding: 0 7px;
+}
+.iqty{
+  width: 50px;
+}
+.fa-solid {
+  color: red;
 }

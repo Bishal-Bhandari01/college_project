@@ -1,18 +1,15 @@
 <?php
 include "dbconn.php";
 session_start();
-$_SESSION['$useremail'];
-if (!$_SESSION['$useremail']) {
+$_SESSION['$email'];
+
+if (!$_SESSION['$email']) {
     header('Location: ./login.php');
 } else {
 
-    $sql = "SELECT * FROM user WHERE email = '" . $_SESSION['$useremail'] . "'";
+    $sql = "SELECT * FROM admin WHERE email = '" . $_SESSION['$email'] . "'";
     $result = mysqli_query($conn, $sql);
     $row1 = mysqli_fetch_assoc($result);
-
-    $sqli = "SELECT * FROM manageitem WHERE useremail = '" . $_SESSION['$useremail'] . "'";
-    $result = mysqli_query($conn, $sqli);
-    $row = mysqli_num_rows($result);
 ?>
 
     <link rel="stylesheet" href="./assets/css/header1.css">
@@ -34,14 +31,6 @@ if (!$_SESSION['$useremail']) {
                 <li>
                     <a href="#">About us</a>
                 </li>
-
-                <li>
-                    <div class="cartbtn">
-                        <a href="./payment.php">
-                            My Cart(<?php echo $row; ?>)
-                        </a>
-                    </div>
-                </li>
                 <li>
                     <div class="dropdown">
                         <button class="dropbtn"><?php echo $row1['username'] ?>
@@ -51,7 +40,7 @@ if (!$_SESSION['$useremail']) {
                             <?php
                             if (isset($_POST['logout'])) {
                                 session_destroy();
-                                header('Location: ../login.php');
+                                header('Location: ./login.php');
                             }
                             ?>
                         </form>
@@ -60,7 +49,7 @@ if (!$_SESSION['$useremail']) {
             </ul>
         </div>
     </nav>
-<?php
 
+<?php
 }
 ?>

@@ -17,131 +17,168 @@
 
 <body>
 
-<style>
-    *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: 'Kanit',sans-serif;
-}
-.max-width {
-    max-width: 1300px;
-    padding: 0 50px;
-    display: flex;
-    justify-content: space-between;
-}
-.navbar{
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-    background:gray;
-    padding: 20px 0;
-    color: #fff;
-}
-.logo{
-    font-size: 20px;
-    font-weight: bold;
-}
-ul{
-    float: right;
-    margin-bottom: 5px;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Kanit', sans-serif;
+        }
 
-ul li{
-    display: inline-block;
-}
-ul li a{
-    margin-right: 30px;
-    color: #fff;
-}
+        .max-width {
+            max-width: 1300px;
+            padding: 0 50px;
+            display: flex;
+            justify-content: space-between;
+        }
 
-/* home start here */
-.home{
-    width: 100%;
-    height:100vh;
-    text-align: left;
-}
+        .navbar {
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+            background: gray;
+            padding: 20px 0;
+            color: #fff;
+        }
 
-.form{
-    margin-top:10%;
-    text-align: center;
-    width: 400px;
-    height: 470px;
-    border-radius: 30px;
-    box-shadow: 6px 6px 10px -1px rgb(0 0 0 / 15%);
-}
-.title{
-    margin-top:20px;
-}
-input{
-    width: 350px;
-    height: 35px;
-    border: 1px solid;
-    border-radius: 60px;
-    margin-top: 30px;
-    text-align: center;
-}
-.username input:focus{
-    outline: 0;
-}
-.username.success input{
-    border-color: rgb(10, 202, 10);
-}
-.username.error input{
-    border-color: red;
-}
-.radio1{
-    width:15px;
-    height:15px;
-}
-.radio2{
-    width:15px;
-    height:15px;
-}
-.btn{
-    width: 160px;
-    height: 40px;
-    font-size: 18px;
-    border: 0;
-    border-radius: 30px;
-    background: green;
-    color: #fff;
-    margin-top: 20px;
-    transition: all 0.5s ease-in-out;
-}
-.btn:hover{
-    width: 170px;
-    height:45px;
-    font-size: 23px;
-}
-.text{
-    font-size: 13px;
-    font-weight: bold;
-    margin-top: 30px;
-    margin-bottom: 5px;
-    color: gray;
-}
-.log{
-    display: inline-block;
-    padding: 7px 30px;
-    width: 160px;
-    height: 40px;
-    text-align: center;
-    text-decoration: none;
-    color: #ffffff;
-    background-color: green;
-    border-radius: 60px;
-    outline: none;
-    transition: all 0.5s ease-in-out;
-}
-.log:hover{
-    width: 170px;
-    height: 45px;
-    font-size: 23px;
-}
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
 
-</style>
+        ul {
+            float: right;
+            margin-bottom: 5px;
+        }
+
+        ul li {
+            display: inline-block;
+        }
+
+        ul li a {
+            margin-right: 30px;
+            color: #fff;
+        }
+
+        /* home start here */
+        .home {
+            width: 100%;
+            height: 100vh;
+            text-align: left;
+        }
+
+        .form {
+            margin-top: 10%;
+            text-align: center;
+            width: 400px;
+            height: 470px;
+            border-radius: 30px;
+            box-shadow: 6px 6px 10px -1px rgb(0 0 0 / 15%);
+        }
+
+        .title {
+            margin-top: 20px;
+        }
+
+        .data .logo {
+            font-size: 30px;
+            position: relative;
+            top: 50%;
+            left: 40%;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 350px;
+            height: 35px;
+            border: 1px solid;
+            border-radius: 60px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .username input:focus {
+            outline: 0;
+        }
+
+        .username.success input {
+            border-color: rgb(10, 202, 10);
+        }
+
+        .username.error input {
+            border-color: red;
+        }
+
+        .radio1 {
+            width: 15px;
+            height: 15px;
+        }
+
+        .radio2 {
+            width: 15px;
+            height: 15px;
+        }
+
+        .btn {
+            width: 160px;
+            height: 40px;
+            font-size: 18px;
+            border: 0;
+            border-radius: 30px;
+            background: green;
+            color: #fff;
+            margin-top: 20px;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .btn:hover {
+            width: 170px;
+            height: 45px;
+            font-size: 23px;
+        }
+
+        .text {
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 5px;
+            color: gray;
+        }
+
+        .sub {
+            font-size: 30px;
+            position: relative;
+            top: 50%;
+            left: 40%;
+            text-align: center;
+        }
+
+        .log {
+            display: inline-block;
+            padding: 7px 30px;
+            width: 160px;
+            height: 40px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: green;
+            border-radius: 60px;
+            outline: none;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .log:hover {
+            width: 170px;
+            height: 45px;
+            font-size: 23px;
+        }
+    </style>
 
     <header class="navbar">
         <div class="max-width">
@@ -152,20 +189,21 @@ input{
                 <li>
                     <a href="#">Home</a>
                 </li>
-                <li>
-                    <a href="#">Contact us</a>
-                </li>
-                <li>
-                    <a href="#">About us</a>
-                </li>
-
             </ul>
         </div>
     </header>
 
     <main class="home">
         <div class="max-width">
-            <div class="data"></div>
+            <div class="data">
+                <div class="logo">
+                    WARK
+                </div>
+                <div class="sub">
+                    <p>Good shoes take you good places.</p>
+                    <p>Let make our journey.</p>
+                </div>
+            </div>
             <div class="form">
                 <form id="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                     <h1 class="title">Sign up</h1>
@@ -201,7 +239,7 @@ input{
                 if ($conn) {
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-                        $user_exist_query = "SELECT * FROM `user` WHERE `email` = '".trim($_POST['email'])."'";
+                        $user_exist_query = "SELECT * FROM `user` WHERE `email` = '" . trim($_POST['email']) . "'";
 
                         $result = mysqli_query($conn, $user_exist_query);
 
@@ -216,7 +254,7 @@ input{
                             } else {
                                 $password = trim($_POST['password']);
                                 $hashed_password = md5($password);
-                                $sqli = "INSERT INTO `user` (`username`, `email` , `Password`, `contact`) VALUES ('" .trim($_POST['uname'])."', '".trim($_POST['email'])."','".$hashed_password."','".trim($_POST['contactnumber'])."')";
+                                $sqli = "INSERT INTO `user` (`username`, `email` , `Password`, `contact`) VALUES ('" . trim($_POST['uname']) . "', '" . trim($_POST['email']) . "','" . $hashed_password . "','" . trim($_POST['contactnumber']) . "')";
                                 if (mysqli_query($conn, $sqli)) {
                                     echo "<script>alert('Registed sucessfully');
                                                     window.location.href='./login.php';</script>";

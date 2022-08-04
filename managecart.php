@@ -31,3 +31,4 @@ if ($conn) {
     header("Location: user.php");
 
 }
+?>

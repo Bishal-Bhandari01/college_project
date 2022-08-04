@@ -128,13 +128,6 @@
                 <li>
                     <a href="#">Home</a>
                 </li>
-                <li>
-                    <a href="#">Contact us</a>
-                </li>
-                <li>
-                    <a href="#">About us</a>
-                </li>
-
             </ul>
         </div>
     </header>
@@ -170,10 +163,10 @@
                     $row = mysqli_fetch_assoc($result);
 
                     if (md5($passd) === $row['password']) {
-                        echo "<script>alert('Login Successfully');
+                        echo "<script>
                                     window.location.href='./adminpannel.php';
                                     </script>;";
-                        $_SESSION['$ademail'] = $ademail;
+                        $_SESSION['$email'] = $ademail;
                     } else {
                         echo "incorrect password";
                     }
@@ -187,3 +180,11 @@
 </body>
 
 </html>
+
+<?php 
+if(!$_SESSION['$useremail']){
+    header('Location: ./login.php');
+}else{
+    
+}
+?>

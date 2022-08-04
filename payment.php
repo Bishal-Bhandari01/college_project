@@ -19,86 +19,65 @@ include "./dbconn.php";
     <?php
     include "./header1.php";
     $_SESSION['$useremail'];
-    $useremail = $_SESSION['$useremail'];
 
     ?>
 
-    <main class="home" style="
-                position: relative;
-                width: 50%;">
+    <main class="home">
         <div class="max-width">
-            <div class="table-content" style="width: 85%;
+            <div class="table-content">
+                <table style="
+                    width: 90%;
                     text-align: center;">
-                <table class="card">
-                    <?php
-                    $sqli = "SELECT * FROM manageitem WHERE useremail='$useremail'";
-                    $result = mysqli_query($conn, $sqli);
-                    if (mysqli_num_rows($result)) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                    ?>
-                            <tr class="cards-content">
-                                <td><img src="./assets/pictures/<?php echo $row['product_image'] ?>" style="width:100px;margin-top: 5px; height: auto;"></td>
-                                <td>
-                                    <div><?php echo $row['productname'] ?></div>
-                                </td>
-                                <td>
-                                    <div>Brand: <?php echo $row['category'] ?></div>
-                                </td>
-                                <td>
-                                    <p>Rs. <?php echo $row['productprice'] ?></p>
-                                    <input id="amount" type="hidden" value="<?php echo $row['productprice'] ?>">
-                                </td>
-                                <td>
-                                    <input type="number" id="qty" style="width: 40px;" name="qty" value="1" onchange="changedValue()">
-                                </td>
-                                <td>
-                                    <p id="total" name="total"></p>
-                                </td>
-                                <td class="button">
-                                    <a href="manageitemdel.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to remove it.')">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                    <?php
+                    <p style="text-align:center; font-size: 30px; margin-bottom: 5px;">My Cart</p>
+                    <thead>
+                        <td>Image</td>
+                        <td>Name</td>
+                        <td>Brand</td>
+                        <td>Price (Rs.)</td>
+                        <td>Quantity</td>
+                        <td>Total (Rs.)</td>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $sqli = "SELECT * FROM manageitem WHERE useremail='" . $_SESSION['$useremail'] . "'";
+                        if ($response = mysqli_query($conn, $sqli)) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                                <tr>
+                                    <td><img src="./assets/pictures/<?php echo $row['product_image']; ?>"></td>
+                                    <td><?php echo $row['productname']; ?></td>
+                                    <td><?php echo $row['category']; ?></td>
+                                    <td><?php echo $row['productprice']; ?><imput type="hidden" class="iprices" value="<?php echo $row['productprice']; ?>"></td>
+                                    <td><input type="number" name="qty" onchange="Total()" class="iqty" value="1"></td>
+                                    <td>
+                                        <p class="itotal"></p>
+                                    </td>
+                                    <td><a href="manageitemdel.php/id=<?php echo $row['id']; ?>">
+                                            <i class="fa-solid fa-trash"></i></a></td>
+                                </tr>
+                        <?php
+                            }
                         }
-                    } ?>
+                        ?>
+                    </tbody>
                 </table>
-            </div>
-            <div class="paymentbox">
-                <div class="form-control">
-                    <p class="text">Order Id</p>
-                    <p id="orderid"></p>
-                </div>
-                <div class="form-control">
-                    <p class="text">Total Amount</p>
-                    <p id="totalamount"></p>
-                </div>
-                <div class="form-control">
-                    <p class="text">Address</p>
-                    <input type="text" required>
-                </div>
-                <div class="payment">
-                    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                        <input type="button" class="paymentbtn" name="submit" value="Place an order">
-                    </form>
-                </div>
             </div>
         </div>
     </main>
     <script>
-        var tendigit = Math.floor(Math.random() * 1000000000000);
-        document.getElementById("orderid").innerHTML = "#" + tendigit;
+        // var tendigit = Math.floor(Math.random() * 1000000000000);
+        // document.getElementById("orderid").innerHTML = "#" + tendigit;
 
-        function changedValue() {
-            let val = parseInt(document.getElementById("qty").value);
-            let currentAmount = parseInt(document.getElementById("amount").value);
+        var iprice = parseInt(document.getElementsByClassName("iprice").value);
+        var iqty = parseInt(document.getElementsByClassName("iqty").value);
+        var itotal = parseInt(document.getElementsByClassName("itotal").value);
 
-            let total = document.getElementById("total");
-            let totalamount = val * currentAmount;
-            console.log(currentAmount);
-            total.innerHTML = totalamount;
+        function Total() {
+            for (var i = 0; i <= iprice.length; i++) {
+                itotal[i].innerHTML = parseInt(iprice[i].value) * parseInt(iqty[i].value);
+            }
         }
+        Total();
     </script>
 </body>
 
