@@ -9,10 +9,6 @@ if (!$_SESSION['$useremail']) {
     $sql = "SELECT * FROM user WHERE email = '" . $_SESSION['$useremail'] . "'";
     $result = mysqli_query($conn, $sql);
     $row1 = mysqli_fetch_assoc($result);
-
-    $sqli = "SELECT * FROM manageitem WHERE useremail = '" . $_SESSION['$useremail'] . "'";
-    $result = mysqli_query($conn, $sqli);
-    $row = mysqli_num_rows($result);
 ?>
 
     <link rel="stylesheet" href="./assets/css/header1.css">
@@ -29,16 +25,22 @@ if (!$_SESSION['$useremail']) {
                     <a href="user.php">Home</a>
                 </li>
                 <li>
-                    <a href="#">Contact us</a>
+                    <a href="contactus.php">Contact us</a>
                 </li>
                 <li>
-                    <a href="#">About us</a>
+                    <a href="aboutus.php">About us</a>
                 </li>
 
                 <li>
                     <div class="cartbtn">
+                        <?php
+                        $count = 0;
+                        if (isset($_SESSION['cart'])) {
+                            $count = count($_SESSION['cart']);
+                        }
+                        ?>
                         <a href="./payment.php">
-                            My Cart(<?php echo $row; ?>)
+                            My Cart( <?php echo $count; ?> )
                         </a>
                     </div>
                 </li>

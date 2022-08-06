@@ -256,8 +256,7 @@
                                 $hashed_password = md5($password);
                                 $sqli = "INSERT INTO `user` (`username`, `email` , `Password`, `contact`) VALUES ('" . trim($_POST['uname']) . "', '" . trim($_POST['email']) . "','" . $hashed_password . "','" . trim($_POST['contactnumber']) . "')";
                                 if (mysqli_query($conn, $sqli)) {
-                                    echo "<script>alert('Registed sucessfully');
-                                                    window.location.href='./login.php';</script>";
+                                    echo "<script>window.location.href='./login.php';</script>";
                                 }
                             }
                         }

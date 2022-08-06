@@ -24,58 +24,94 @@ include "./dbconn.php";
 
     <main class="home">
         <div class="max-width">
-            <div class="table-content">
-                <table style="
+            <div class="whole">
+                <div class="table-content">
+                    <table style="
                     width: 90%;
                     text-align: center;">
-                    <p style="text-align:center; font-size: 30px; margin-bottom: 5px;">My Cart</p>
-                    <thead>
-                        <td>Image</td>
-                        <td>Name</td>
-                        <td>Brand</td>
-                        <td>Price (Rs.)</td>
-                        <td>Quantity</td>
-                        <td>Total (Rs.)</td>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $sqli = "SELECT * FROM manageitem WHERE useremail='" . $_SESSION['$useremail'] . "'";
-                        if ($response = mysqli_query($conn, $sqli)) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                        ?>
-                                <tr>
-                                    <td><img src="./assets/pictures/<?php echo $row['product_image']; ?>"></td>
-                                    <td><?php echo $row['productname']; ?></td>
-                                    <td><?php echo $row['category']; ?></td>
-                                    <td><?php echo $row['productprice']; ?><imput type="hidden" class="iprices" value="<?php echo $row['productprice']; ?>"></td>
-                                    <td><input type="number" name="qty" onchange="Total()" class="iqty" value="1"></td>
-                                    <td>
-                                        <p class="itotal"></p>
-                                    </td>
-                                    <td><a href="manageitemdel.php/id=<?php echo $row['id']; ?>">
-                                            <i class="fa-solid fa-trash"></i></a></td>
-                                </tr>
-                        <?php
+                        <h1 style="text-align:center; margin-bottom: 5px;">My Cart</h1>
+                        <thead>
+                            <td>S.N</td>
+                            <td>Image</td>
+                            <td>Name</td>
+                            <td>Brand</td>
+                            <td>Price (Rs.)</td>
+                            <td>Quantity</td>
+                            <td>Total (Rs.)</td>
+                        </thead>
+                        <tbody style="text-align: center;">
+                            <?php
+                            $total = 0;
+                            if (isset($_SESSION['cart'])) {
+                                foreach ($_SESSION['cart'] as $key => $row) {
+                                    $sr = $key + 1;
+                                    echo "
+                                        <tr>
+                                        <td>$sr</td>
+                                        <td><img src='./assets/pictures/$row[image]' alt='product_image'/></td>
+                                        <td>$row[product_name]</td>
+                                        <td>$row[brand]</td>
+                                        <td>$row[price]<input type='hidden' class='iprice' value='$row[price]'></td>
+                                        <td><input type='number' value='$row[qty]' min='1' max='100' onchange='Total()' name='iqty' class='iqty' ></td>
+                                        <td class='itotal' name='itotal'></td>
+                                        <td>
+                                        <form action='managecart.php' method='POST'>
+                                        <button name='remove' style='background: transparent;border: none; font-size: 20px;'><i class='fa-solid fa-trash' style='color: crimson;'></i></button>
+                                        <input type='hidden' name='product_name' value='$row[product_name]' >
+                                        </form>
+                                        </td>
+                                        </tr>
+                                        ";
+                                }
                             }
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="makepurchase">
+                    <div class="purchase-box">
+                        <form action="purchase.php" method="POST" class="type-payment">
+                            <div class="payment-money">
+                                <p class="title">Total:</p>
+                                <p class="totalprice" id="gtotal"></p>
+                            </div>
+                            <div class="form">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input class="name" type="text" name="fname">
+                                </div>
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input class="address" type="text" name="address">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone/Telephone Number</label>
+                                    <input class="contact" type="number" name="contact">
+                                </div>
+                            </div>
+                            <div class="checkbox">
+                                <input type="radio" class="radio" checked> Cash On Delivery
+                            </div>
+                            <button class="btn" name="purchase">Make a purchase.</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
     </main>
     <script>
-        // var tendigit = Math.floor(Math.random() * 1000000000000);
-        // document.getElementById("orderid").innerHTML = "#" + tendigit;
-
-        var iprice = parseInt(document.getElementsByClassName("iprice").value);
-        var iqty = parseInt(document.getElementsByClassName("iqty").value);
-        var itotal = parseInt(document.getElementsByClassName("itotal").value);
+        var gt = 0;
+        var iprice = document.getElementsByClassName("iprice");
+        var iqty = document.getElementsByClassName("iqty");
+        var itotal = document.getElementsByClassName("itotal");
+        var gtotal = document.getElementById("gtotal");
 
         function Total() {
-            for (var i = 0; i <= iprice.length; i++) {
-                itotal[i].innerHTML = parseInt(iprice[i].value) * parseInt(iqty[i].value);
+            gt = 0;
+            for (var i = 0; i < iprice.length; i++) {
+                itotal[i].innerHTML = (iprice[i].value) * (iqty[i].value);
+                gt = gt + (iprice[i].value) * (iqty[i].value);
             }
+            gtotal.innerText = "Rs. " + gt;
         }
         Total();
     </script>

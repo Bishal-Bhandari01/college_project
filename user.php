@@ -31,35 +31,38 @@ include './dbconn.php';
                 while ($row = mysqli_fetch_assoc($result)) {
 
             ?>
-                    <div class="card">
-                        <div class="image" style="height: 120px;">
-                            <img src="./assets/pictures/<?php echo $row['image'] ?>">
-                        </div>
-                        <div class="container">
-                            <h5><?php echo $row['product_name'] ?></h5>
-                            <p>Price: Rs.<?php echo $row['product_price'] ?></p>
-                            <p>Brand: <?php echo $row['category'] ?></p>
-                        </div>
-                        <div class="buttons" style="align-self: space-between;">
-                            <a href="managecart.php?id=<?php echo $row['product_id']; ?>">
+                    <form action="managecart.php" method="POST">
+                        <div class="card">
+                            <div class="image" style="height: 120px;">
+                                <img src="./assets/pictures/<?php echo $row['image'] ?>">
+                            </div>
+                            <div class="container">
+                                <h5><?php echo $row['product_name'] ?></h5>
+                                <p>Price: Rs.<?php echo $row['product_price'] ?></p>
+                                <p>Brand: <?php echo $row['category'] ?></p>
+                            </div>
+                            <div class="buttons" style="align-self: space-between;">
                                 <button style="border:none;
                         width: 100%;
                         height: 45px;
                         color: white;
                         border-radius: 8px;
                         background: green;
-                        cursor:pointer;" class="modify-item">
+                        cursor:pointer;" class="modify-item" name="add_to_cart">
                                     <i class="fas fa-shopping-cart">
                                     </i>
                                 </button>
-                            </a>
+                            </div>
+                            <input type="hidden" name="product_name" value="<?php echo $row['product_name']; ?>" />
+                            <input type="hidden" name="image" value="<?php echo $row['image']; ?>" />
+                            <input type="hidden" name="category" value="<?php echo $row['category']; ?>">
+                            <input type="hidden" name="price" value="<?php echo $row['product_price']; ?>" />
                         </div>
-                    </div>
+                    </form>
             <?php
                 }
             }
             ?>
-        </div>
         </div>
     </section>
 
